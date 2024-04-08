@@ -7,4 +7,10 @@
 clear all;
 close all;
 clc;
+<<<<<<< HEAD
 % Teste gf
+=======
+
+%Victor gay
+
+>>>>>>> 8399b20290586a9b2d47686767b477b6f7de9aaa
