@@ -7,6 +7,3 @@
 clear all;
 close all;
 clc;
-
-%Whilker gay
-
