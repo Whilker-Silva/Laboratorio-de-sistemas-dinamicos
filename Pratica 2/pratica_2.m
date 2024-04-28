@@ -62,11 +62,11 @@ title('bar');
 
 %% Ex03
 
-y = zeros(1,10);
+y = zeros(1,3);
 y(1) = 10;
 x = 2;
 
-for n = 2:10
+for n = 2:3
     y(n) = x + 2*y(n-1);
 end 
 
