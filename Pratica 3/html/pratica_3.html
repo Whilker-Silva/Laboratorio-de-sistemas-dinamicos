@@ -7,9 +7,9 @@ This HTML was auto-generated from MATLAB code.
 To make changes, update the MATLAB code and republish this document.
       -->
 <title>Laborat&oacute;rio de Sistemas Din&acirc;icos</title>
-<meta name="generator" content="MATLAB 23.2">
+<meta name="generator" content="MATLAB 24.1">
 <link rel="schema.DC" href="http://purl.org/dc/elements/1.1/">
-<meta name="DC.date" content="2024-04-01">
+<meta name="DC.date" content="2024-04-28">
 <meta name="DC.source" content="pratica_3.m">
 <style type="text/css">
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
@@ -87,13 +87,22 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 <a href="#1">Limpar workspcade</a>
 </li>
 <li>
-<a href="#2">ex01</a>
+<a href="#2">Ex01 A</a>
 </li>
 <li>
-<a href="#3">ex01 a</a>
+<a href="#3">Ex01 B</a>
 </li>
 <li>
-<a href="#4">ex02 b</a>
+<a href="#4">Ex01 C</a>
+</li>
+<li>
+<a href="#5">Ex01 D</a>
+</li>
+<li>
+<a href="#6">Ex02 A</a>
+</li>
+<li>
+<a href="#7">Ex02 B</a>
 </li>
 </ul>
 </div>
@@ -102,16 +111,14 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 close <span class="string">all</span>;
 clc;
 </pre>
-<h2 id="2">ex01</h2>
+<h2 id="2">Ex01 A</h2>
 <pre class="codeinput">s = tf(<span class="string">'s'</span>);
-
 p = s^2 + 2*s + 1;
 q = s + 1;
-</pre>
-<h2 id="3">ex01 a</h2>
-<pre class="codeinput">u = p*q;
 
-printsys(u.num{1}, u.den{1});
+G = p*q;
+
+printsys(G.num{1}, G.den{1});
 </pre>
 <pre class="codeoutput"> 
 num/den = 
@@ -120,7 +127,7 @@ num/den =
    ---------------------
              1
 </pre>
-<h2 id="4">ex02 b</h2>
+<h2 id="3">Ex01 B</h2>
 <pre class="codeinput">G = q/p;
 
 fprintf(<span class="string">'polo: %d\n'</span>,pole(G));
@@ -130,9 +137,42 @@ fprintf(<span class="string">'zero: %d\n'</span>,zero(G));
 polo: -1
 zero: -1
 </pre>
-<p class="footer">
+<h2 id="4">Ex01 C</h2>
+<pre class="codeinput">s = tf(<span class="string">'s'</span>);
+
+p = s^2+2*s+1;
+q = s+1;
+
+disp(evalfr(p,-1));
+</pre>
+<pre class="codeoutput">     0
+
+</pre>
+<h2 id="5">Ex01 D</h2>
+<pre class="codeinput">G = q/p;
+pzmap(G);
+</pre>
+<img vspace="5" hspace="5" src="pratica_3_01.png" alt=""> <h2 id="6">Ex02 A</h2>
+<pre class="codeinput">s = tf(<span class="string">'s'</span>);
+C = 1/(s+1);
+G = 1/(s+3);
+
+T = series(C,G);
+printsys(T.num{1},T.den{1});
+</pre>
+<pre class="codeoutput"> 
+num/den = 
+ 
+         1
+   -------------
+   s^2 + 4 s + 3
+</pre>
+<h2 id="7">Ex02 B</h2>
+<pre class="codeinput">ltiview(T);
+</pre>
+<img vspace="5" hspace="5" src="pratica_3_02.png" alt=""> <p class="footer">
 <br>
-<a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2023b</a>
+<a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2024a</a>
 <br>
 </p>
 </div>
@@ -148,26 +188,49 @@ clear;
 close all;
 clc;
 
-%%  ex01
-s = tf('s');
+%% Ex01 A
 
+s = tf('s');
 p = s^2 + 2*s + 1;
 q = s + 1;
 
-%% ex01 a
+G = p*q;
 
-u = p*q;
+printsys(G.num{1}, G.den{1});
 
-printsys(u.num{1}, u.den{1});
-
-%% ex02 b
+%% Ex01 B
 
 G = q/p;
 
 fprintf('polo: %d\n',pole(G));
 fprintf('zero: %d\n',zero(G));
 
+%% Ex01 C
 
+s = tf('s');
+
+p = s^2+2*s+1;
+q = s+1;
+
+disp(evalfr(p,-1));
+
+%% Ex01 D
+
+G = q/p;
+pzmap(G);
+
+%% Ex02 A
+
+s = tf('s');
+C = 1/(s+1);
+G = 1/(s+3);
+
+T = series(C,G);
+printsys(T.num{1},T.den{1});
+
+%% Ex02 B
+
+ltiview(T);
 ##### SOURCE END #####
 -->
 </body>
