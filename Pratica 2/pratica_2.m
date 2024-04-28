@@ -62,6 +62,18 @@ title('bar');
 
 %% Ex03
 
+y = zeros(1,3);
+
+y(1) = 22;
+x = 2;
+
+for n = 2:3
+  y(n) = x + 2*y(n-1);
+end
+
+for n = 1:3
+    fprintf("Y[%d] = %d\n",n-1 ,y(n));
+end
 
 %% Ex04
 
