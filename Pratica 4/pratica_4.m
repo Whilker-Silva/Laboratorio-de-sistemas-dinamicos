@@ -153,6 +153,7 @@ step(Aprox2,Hs2);
 Cs = tf(1, [1 1 1]);
 step(Cs); 
 
+
 %% Ex. 4 b)
 
 % Para x = 0.1
