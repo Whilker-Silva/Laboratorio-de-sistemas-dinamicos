@@ -55,6 +55,51 @@ ltiview(T);
 %% Ex02 C
 
 t = 0:0.1:10;
-plot(step(C,t));
+c=step(C,t);
+g=step(G,t);
+
+
+plot(t,c,'r');
+hold on;
+plot(t,g,'b');
+hold off;
+legend('C(s)', 'G(s)');
+
+%% Ex02 D
+
+s = tf('s');
+
+rampa = 1/(s^2);
+
+T = series(C,rampa);
+
+t = 0:0.1:10;
+R = impulse(T,t);
+
+figure;
+plot(t, R);
+title('Resposta a rampa de C(s)');
+
+%% Ex03 A
+
+[Zc, Pc, Kc] = zpkdata(G);
+
+disp('Parâmetro C(s)');
+fprintf('ganho: %f\n',Kc);
+fprintf('constante de tempo: %f\n',-1/Pc);
+fprintf('tempo morto: %f\n',0);
+fprintf('polo: %f\n',Pc));
+fprintf('zero: %f\n\n\n',Zc);
+
+
+[Zg, Pg, Kg] = zpkdata(G);
+Disp('Parâmetro G(s)')
+fprintf('ganho: %f\n',gain(G));
+fprintf('constante de tempo: %f\n',gain(G));
+fprintf('cempo morto: %f\n',gain(G));
+fprintf('polo: %f\n',pole(G));
+fprintf('zero: %f\n',zero(G));
+
+
 
 
