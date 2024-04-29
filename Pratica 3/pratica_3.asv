@@ -4,8 +4,8 @@
 % Autores: Victor Hugo Daia Lorenzato e Whilker Henrique Santos Silva
 
 %% Limpar workspcade
-clear;
 close all;
+clear;
 clc;
 
 %% Ex01 A
@@ -82,24 +82,49 @@ title('Resposta a rampa de C(s)');
 
 %% Ex03 A
 
-[Zc, Pc, Kc] = zpkdata(G);
+C = 1/(s+1);
+G = (1/3)/(1/3*s + 1);
+
+[Kc, Zc, Pc] = tfdata(C,'v');
+[Kg, Zg, Pg] = tfdata(G,'v');
+
 
 disp('Parâmetro C(s)');
-fprintf('ganho: %f\n',Kc);
-fprintf('constante de tempo: %f\n',-1/Pc);
+fprintf('ganho: %f\n',Kc(2));
+fprintf('constante de tempo: %f\n',-1/pole(C));
 fprintf('tempo morto: %f\n',0);
-fprintf('polo: %f\n',Pc));
-fprintf('zero: %f\n\n\n',Zc);
+fprintf('polo: %f\n',pole(C));
+fprintf('zero: %f\n\n\n',zero(C));
 
 
-[Zg, Pg, Kg] = zpkdata(G);
-Disp('Parâmetro G(s)')
-fprintf('ganho: %f\n',gain(G));
-fprintf('constante de tempo: %f\n',gain(G));
-fprintf('cempo morto: %f\n',gain(G));
+disp('Parâmetro G(s)')
+fprintf('ganho: %f\n',Kg(2));
+fprintf('constante de tempo: %f\n',-1/pole(G));
+fprintf('tempo morto: %f\n',0);
 fprintf('polo: %f\n',pole(G));
-fprintf('zero: %f\n',zero(G));
+fprintf('zero: %f\n',zero(C));
 
+%% Ex03 B
+
+s = tf('s');
+M1 = 1/(s+1);
+M2 = 1/(s+3);
+
+M1_degrau = step(M1);
+M2_degrau = step(M2);
+
+save respostasDegrau M1_degrau M2_degrau;
+
+%% Ex3 (c)
+
+s = tf('s');
+M1 = 1/(s+1);
+M2 = 1/(s+3);
+
+T = series(M1,M2);
+
+T_degrau = step(T);
+save respostaDegrau T_degrau;
 
 
 

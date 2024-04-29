@@ -106,6 +106,55 @@ fprintf('zero: %f\n',zero(C));
 
 %% Ex03 B
 
+s = tf('s');
+C = 1/(s+1);
+G = 1/(s+3);
+
+Cdegrau = step(C);
+Gdegrau = step(G);
+
+save respostaDegrauC Cdegrau
+save respostaDegrauG Gdegrau
+
+%% Ex03 C
+
+T = series(C,G);
+Tdegrau = step(T);
+
+save respostaDegrauT Tdegrau;
 
 
+%% Ex04 A
 
+
+%% Ex04 B
+
+s = tf('s');
+
+Y = 20/(120*s+1);
+step(Y);
+
+%% Ex04 C
+
+s = tf('s');
+
+Y = 20/(120*s+1);
+
+[y, t] = step(Y);
+
+plot(t,y+25);
+
+%% Ex04 D
+
+s = tf('s');
+
+t = 0:0.01:600;
+
+
+Y1 = 20/(120*s+1);
+Y2 = 5/(120*s+1)*exp(-120*s);
+
+y1 = step(t,Y1);
+y2 = step(t,Y2);
+
+plot(t,y1+25-y2);
