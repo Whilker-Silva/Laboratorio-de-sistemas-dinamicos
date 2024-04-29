@@ -126,8 +126,16 @@ save respostaDegrauT Tdegrau;
 
 %% Ex04 A
 
+s=tf('s');
+
+D_s = 5/(0.5*s+1);
+U_s = 4/(0.5*s+1);
+
+Y_s = series(U_s,D_s);
+printsys(Y_s.Numerator{1}, Y_s.Denominator{1});
 
 %% Ex04 B
+
 
 s = tf('s');
 

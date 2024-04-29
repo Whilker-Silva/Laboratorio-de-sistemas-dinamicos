@@ -107,24 +107,62 @@ fprintf('zero: %f\n',zero(C));
 %% Ex03 B
 
 s = tf('s');
-M1 = 1/(s+1);
-M2 = 1/(s+3);
+C = 1/(s+1);
+G = 1/(s+3);
 
-M1_degrau = step(M1);
-M2_degrau = step(M2);
+Cdegrau = step(C);
+Gdegrau = step(G);
 
-save respostasDegrau M1_degrau M2_degrau;
+save respostaDegrauC Cdegrau
+save respostaDegrauG Gdegrau
 
-%% Ex3 (c)
+%% Ex03 C
+
+T = series(C,G);
+Tdegrau = step(T);
+
+save respostaDegrauT Tdegrau;
+
+
+%% Ex04 A
+
+s=tf('s');
+
+D_s = 5/(0.5*s+1);
+U_s = 4/(0.5*s+1);
+
+Y_s = U_s - D_s;
+printsys(Y_s.Numerator{1}, Y_s.Denominator{1});
+
+%% Ex04 B
 
 s = tf('s');
-M1 = 1/(s+1);
-M2 = 1/(s+3);
 
-T = series(M1,M2);
+Y_s = 5*step(U_s) - D_s;
 
-T_degrau = step(T);
-save respostaDegrau T_degrau;
+impulse(Y_s);
+
+%% Ex04 C
+
+s = tf('s');
+
+Y = 20/(120*s+1);
+
+[y, t] = step(Y);
+
+plot(t,y+25);
+
+%% Ex04 D
+
+s = tf('s');
+
+t = 0:0.01:600;
 
 
+Y1 = 20/(120*s+1);
+Y2 = 5/(120*s+1)*exp(-120*s);
 
+y1 = step(t,Y1);
+y2 = step(t,Y2);
+
+plot(t,y1+25-y2);
