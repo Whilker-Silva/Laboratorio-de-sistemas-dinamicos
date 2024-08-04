@@ -275,11 +275,14 @@ grid('on');
 figure(1);
 bode(G1_S);
 title('G1(s)');
+grid('on');
 
 figure(2);
 bode(G2_S);
 title('G4(s)');
+grid('on');
 
 figure(3);
 bode(G5_S);
 title('G5(s)');
+grid('on');
