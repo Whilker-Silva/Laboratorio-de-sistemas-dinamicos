@@ -85,14 +85,8 @@ Ve = 1;
 
 A = -1/R*C;
 B = 1/R*C;
-C = [1; -1/R];
-D = [0; 1/R];
-
-sistema = ss(A, B, C, D);
-
-%% Ex01 H
-
-step(sistema);
+C = [1, -1/R]
+D = 0;
 
 
 
