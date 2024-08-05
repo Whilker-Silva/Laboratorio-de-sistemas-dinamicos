@@ -169,23 +169,17 @@ ylabel('Estados');
 
 %% Ex 02 A
 
-% Definir a variável de Laplace
 s = tf('s');
 
-% Função de Transferência
-G = 1 / (m*s^2 + c*s + k);
+m = 1; 
+c = 1;
+k = 1;
 
-% Exibir a Função de Transferência
+G = 1 / (m * s^2 + c * s + k);
+
 disp('Função de Transferência G(s):');
 G
 
-% Plotar a resposta ao degrau da Função de Transferência
-figure;
-step(G);
-title('Resposta ao Degrau da Função de Transferência G(s)');
-xlabel('Tempo (s)');
-ylabel('Amplitude');
-grid on;
 %% Ex 02 B
 
 s = tf('s');
