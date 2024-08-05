@@ -1,0 +1,1091 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+     <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+     <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      -->
+     <title>Laboratoio sistemas din&acirc;micos</title>
+     <meta name="generator" content="MATLAB 24.1">
+     <link rel="schema.DC" href="http://purl.org/dc/elements/1.1/">
+     <meta name="DC.date" content="2024-08-04">
+     <meta name="DC.source" content="pratica7.m">
+     <style type="text/css">
+          html,
+          body,
+          div,
+          span,
+          applet,
+          object,
+          iframe,
+          h1,
+          h2,
+          h3,
+          h4,
+          h5,
+          h6,
+          p,
+          blockquote,
+          pre,
+          a,
+          abbr,
+          acronym,
+          address,
+          big,
+          cite,
+          code,
+          del,
+          dfn,
+          em,
+          font,
+          img,
+          ins,
+          kbd,
+          q,
+          s,
+          samp,
+          small,
+          strike,
+          strong,
+          tt,
+          var,
+          b,
+          u,
+          i,
+          center,
+          dl,
+          dt,
+          dd,
+          ol,
+          ul,
+          li,
+          fieldset,
+          form,
+          label,
+          legend,
+          table,
+          caption,
+          tbody,
+          tfoot,
+          thead,
+          tr,
+          th,
+          td {
+               margin: 0;
+               padding: 0;
+               border: 0;
+               outline: 0;
+               font-size: 100%;
+               vertical-align: baseline;
+               background: transparent
+          }
+
+          body {
+               line-height: 1
+          }
+
+          ol,
+          ul {
+               list-style: none
+          }
+
+          blockquote,
+          q {
+               quotes: none
+          }
+
+          blockquote:before,
+          blockquote:after,
+          q:before,
+          q:after {
+               content: '';
+               content: none
+          }
+
+          :focus {
+               outine: 0
+          }
+
+          ins {
+               text-decoration: none
+          }
+
+          del {
+               text-decoration: line-through
+          }
+
+          table {
+               border-collapse: collapse;
+               border-spacing: 0
+          }
+
+          html {
+               min-height: 100%;
+               margin-bottom: 1px;
+          }
+
+          html body {
+               height: 100%;
+               margin: 0px;
+               font-family: Arial, Helvetica, sans-serif;
+               font-size: 10px;
+               color: #000;
+               line-height: 140%;
+               background: #fff none;
+               overflow-y: scroll;
+          }
+
+          html body td {
+               vertical-align: top;
+               text-align: left;
+          }
+
+          h1 {
+               padding: 0px;
+               margin: 0px 0px 25px;
+               font-family: Arial, Helvetica, sans-serif;
+               font-size: 1.5em;
+               color: #d55000;
+               line-height: 100%;
+               font-weight: normal;
+          }
+
+          h2 {
+               padding: 0px;
+               margin: 0px 0px 8px;
+               font-family: Arial, Helvetica, sans-serif;
+               font-size: 1.2em;
+               color: #000;
+               font-weight: bold;
+               line-height: 140%;
+               border-bottom: 1px solid #d6d4d4;
+               display: block;
+          }
+
+          h3 {
+               padding: 0px;
+               margin: 0px 0px 5px;
+               font-family: Arial, Helvetica, sans-serif;
+               font-size: 1.1em;
+               color: #000;
+               font-weight: bold;
+               line-height: 140%;
+          }
+
+          a {
+               color: #005fce;
+               text-decoration: none;
+          }
+
+          a:hover {
+               color: #005fce;
+               text-decoration: underline;
+          }
+
+          a:visited {
+               color: #004aa0;
+               text-decoration: none;
+          }
+
+          p {
+               padding: 0px;
+               margin: 3em;
+               font-size: medium;
+               text-align: justify;
+               text-indent: 30px;
+               line-height: 2em;
+          }
+
+          img {
+               padding: 0px;
+               margin: 0px 0px 20px;
+               border: none;
+          }
+
+          p img,
+          pre img,
+          tt img,
+          li img,
+          h1 img,
+          h2 img {
+               margin-bottom: 0px;
+          }
+
+          ul {
+               padding: 0px;
+               margin: 0px 0px 20px 23px;
+               list-style: square;
+          }
+
+          ul li {
+               padding: 0px;
+               margin: 0px 0px 7px 0px;
+          }
+
+          ul li ul {
+               padding: 5px 0px 0px;
+               margin: 0px 0px 7px 23px;
+          }
+
+          ul li ol li {
+               list-style: decimal;
+          }
+
+          ol {
+               padding: 0px;
+               margin: 0px 0px 20px 0px;
+               list-style: decimal;
+          }
+
+          ol li {
+               padding: 0px;
+               margin: 0px 0px 7px 23px;
+               list-style-type: decimal;
+          }
+
+          ol li ol {
+               padding: 5px 0px 0px;
+               margin: 0px 0px 7px 0px;
+          }
+
+          ol li ol li {
+               list-style-type: lower-alpha;
+          }
+
+          ol li ul {
+               padding-top: 7px;
+          }
+
+          ol li ul li {
+               list-style: square;
+          }
+
+          .content {
+               font-size: 1.2em;
+               line-height: 140%;
+               padding: 20px;
+          }
+
+          pre,
+          code {
+               font-size: 12px;
+          }
+
+          tt {
+               font-size: 1.2em;
+          }
+
+          pre {
+               margin: 0px 0px 20px;
+          }
+
+          pre.codeinput {
+               padding: 10px;
+               border: 1px solid #d3d3d3;
+               background: #f7f7f7;
+          }
+
+          pre.codeoutput {
+               padding: 10px 11px;
+               margin: 0px 0px 20px;
+               color: #4c4c4c;
+          }
+
+          pre.error {
+               color: red;
+          }
+
+          @media print {
+
+               pre.codeinput,
+               pre.codeoutput {
+                    word-wrap: break-word;
+                    width: 100%;
+               }
+          }
+
+          span.keyword {
+               color: #0000FF
+          }
+
+          span.comment {
+               color: #228B22
+          }
+
+          span.string {
+               color: #A020F0
+          }
+
+          span.untermstring {
+               color: #B20000
+          }
+
+          span.syscmd {
+               color: #B28C00
+          }
+
+          span.typesection {
+               color: #A0522D
+          }
+
+          .footer {
+               width: auto;
+               padding: 10px 0px;
+               margin: 25px 0px 0px;
+               border-top: 1px dotted #878787;
+               font-size: 0.8em;
+               line-height: 140%;
+               font-style: italic;
+               color: #878787;
+               text-align: left;
+               float: none;
+          }
+
+          .footer p {
+               margin: 0px;
+          }
+
+          .footer a {
+               color: #878787;
+          }
+
+          .footer a:hover {
+               color: #878787;
+               text-decoration: underline;
+          }
+
+          .footer a:visited {
+               color: #878787;
+          }
+
+          table th {
+               padding: 7px 5px;
+               text-align: left;
+               vertical-align: middle;
+               border: 1px solid #d6d4d4;
+               font-weight: bold;
+          }
+
+          table td {
+               padding: 7px 5px;
+               text-align: left;
+               vertical-align: top;
+               border: 1px solid #d6d4d4;
+          }
+     </style>
+</head>
+
+<body>
+     <div class="content">
+          <h1>Laboratoio sistemas din&acirc;micos</h1>
+          <!--introduction-->
+          <p>Prática 07 </p>
+          <p>
+               Autores: Victor Hugo Daia Lorenzato e Whilker Henrique Santos Silva
+          </p>
+          <!--/introduction-->
+          <h2>Contents</h2>
+          <div>
+               <ul>
+                    <li>
+                         <a href="#1">Limpar workspcade</a>
+                    </li>
+                    <li>
+                         <a href="#2">Ex01 A</a>
+                    </li>
+                    <li>
+                         <a href="#3">Ex 01 B</a>
+                    </li>
+                    <li>
+                         <a href="#4">Ex 01 C</a>
+                    </li>
+                    <li>
+                         <a href="#5">Ex 01 D</a>
+                    </li>
+                    <li>
+                         <a href="#6">Ex 01 E (Para B)</a>
+                    </li>
+                    <li>
+                         <a href="#7">Ex 01 E (Para C)</a>
+                    </li>
+                    <li>
+                         <a href="#8">Ex 01 E (Para D)</a>
+                    </li>
+                    <li>
+                         <a href="#9">Ex 01 F</a>
+                    </li>
+                    <li>
+                         <a href="#10">Ex 01 G</a>
+                    </li>
+                    <li>
+                         <a href="#11">Ex 02 A</a>
+                    </li>
+                    <li>
+                         <a href="#12">Ex 02 B</a>
+                    </li>
+                    <li>
+                         <a href="#13">Ex 02 C</a>
+                    </li>
+                    <li>
+                         <a href="#14">Ex 02 D</a>
+                    </li>
+               </ul>
+          </div>
+          <h2 id="1">Limpar workspcade</h2>
+          <pre class="codeinput">close <span class="string">all</span>;
+clear;
+clc;
+</pre>
+          <h2 id="2">Ex01 A</h2>
+          <pre class="codeinput">m = 1;
+c = 1;
+k = 1;
+
+s = tf(<span class="string">'s'</span>);
+G = 1 / (m*s^2 + c*s + k);
+
+disp(<span class="string">'Fun&ccedil;&atilde;o de Transfer&ecirc;ncia G(s):'</span>);
+G
+</pre>
+          <pre class="codeoutput">Fun&ccedil;&atilde;o de Transfer&ecirc;ncia G(s):
+
+G =
+ 
+       1
+  -----------
+  s^2 + s + 1
+ 
+Continuous-time transfer function.
+</pre>
+          <h2 id="3">Ex 01 B</h2>
+          <pre class="codeinput">s = tf(<span class="string">'s'</span>);
+
+m = 1;
+k = 1;
+c = 1;
+x_t = 1;
+
+y_t = (x_t/k)/((1+(s^2 * m)/k) + ((c*s)/k));
+
+step(y_t);
+</pre>
+          <img vspace="5" hspace="5" src="pratica7_01.png" alt="">
+
+          <p style="margin: 0px, 0em">
+               A saída y(t) é a resposta do sistema a um degrau unitário, o termo "1" indica que a resposta final do
+               sistema é 1.
+          </p>
+          <p style="margin: 0px, 0em">
+               O sistema apresentado é de segunda ordem subamortecido, onde a resposta ao degrau tem uma oscilação
+               amortecida que eventualmente se estabiliza no valor de estado estacionário (1).
+          </p>
+
+
+          <h2 id="4">Ex 01 C</h2>
+          <pre class="codeinput">s = tf(<span class="string">'s'</span>);
+
+m = 1;
+k = 4;
+c = 1;
+x_t = 1;
+
+y_t = (x_t/k)/((1+(s^2 * m)/k) + ((c*s)/k));
+
+step(y_t);
+</pre>
+          <img vspace="5" hspace="5" src="pratica7_02.png" alt="">
+          <p>Observa-se uma resposta mais rápida e menos oscilatória, pois o aumento da rigidez (k) tende a aumentar a
+               frequência natural do sistema.</p>
+
+
+          <h2 id="5">Ex 01 D</h2>
+          <pre class="codeinput">s = tf(<span class="string">'s'</span>);
+
+m = 1;
+k = 1;
+c = 4;
+x_t = 1;
+
+y_t = (x_t/k)/((1+(s^2 * m)/k) + ((c*s)/k));
+
+step(y_t);
+</pre>
+          <img vspace="5" hspace="5" src="pratica7_03.png" alt="">
+          <p>
+               Observa-se uma resposta mais amortecida e sem oscilações, pois o aumento do amortecimento (c) tende a
+               reduzir as oscilações do sistema.
+          </p>
+
+          <h2 id="6">Ex 01 E (Para B)</h2>
+          <pre class="codeinput">s = tf(<span class="string">'s'</span>);
+
+m = 1;
+k = 1;
+c = 1;
+x_t = 1;
+
+y_t = (x_t/k)/((1+(s^2 * m)/k) + ((c*s)/k));
+
+bode(y_t);
+</pre>
+          <img vspace="5" hspace="5" src="pratica7_04.png" alt="">
+          <h2 id="7">Ex 01 E (Para C)</h2>
+          <pre class="codeinput">s = tf(<span class="string">'s'</span>);
+
+m = 1;
+k = 4;
+c = 1;
+x_t = 1;
+
+y_t = (x_t/k)/((1+(s^2 * m)/k) + ((c*s)/k));
+
+bode(y_t);
+</pre>
+          <img vspace="5" hspace="5" src="pratica7_05.png" alt="">
+          <h2 id="8">Ex 01 E (Para D)</h2>
+          <pre class="codeinput">s = tf(<span class="string">'s'</span>);
+
+m = 1;
+k = 1;
+c = 4;
+x_t = 1;
+
+y_t = (x_t/k)/((1+(s^2 * m)/k) + ((c*s)/k));
+
+bode(y_t);
+</pre>
+          <img vspace="5" hspace="5" src="pratica7_06.png" alt="">
+          <p>
+               Para B, observa-se que se trata de um sistema com amortecimento crítico. O gráfico de Bode apresenta uma
+               resposta com um pico moderado de ressonância, com uma queda de amplitude suave em altas frequências.
+               Para C, observa-se um aumento na constante da mola k, aumentando a rigidez do sistema. Sua frequência
+               natural será mais alta. O gráfico de Bode terá baixas amplitudes e a fase cairá de 0 graus para -180
+               graus.
+               Para D, observa-se que o amortecimento c é aumentado, tornando o sistema subamortecido. O gráfico de Bode
+               terá uma transição mais suave na amplitude com o aumento da frequência.
+
+          </p>
+
+          <p>
+               Comparação: <br>
+               - Aumentar o valor de c resulta em um sistema mais amortecido, reduzindo os picos de ressonância e
+               suavizando a resposta de frequência.
+               - Aumentar k desloca a frequência natural do sistema para valores mais altos, resultando em um pico de
+               ressonância em frequências mais altas.
+
+          </p>
+
+          <p>
+               Essas variações são refletidas no gráfico de Bode, onde podemos observar como os parâmetros afetam a magnitude e a fase da resposta em frequência dos sistemas massa-mola-amortecedor.
+          </p>
+
+          <h2 id="9">Ex 01 F</h2>
+          <pre class="codeinput">m = 1;
+k = 1;
+c = 1;
+A =[0 1 ; -k/m -c/m];
+B =[0 ; 1/m];
+C =[1 0 ; 0 1 ; -k/m -c/m];
+D =[0 ; 0 ; 1/m];
+SYS = ss(A,B,C,D);
+</pre>
+          <h2 id="10">Ex 01 G</h2>
+          <pre class="codeinput">m = 1;
+k = 1;
+c = 1;
+
+A = [0 1; -k/m -c/m];
+B = [0; 1/m];
+C = [1 0; 0 1; -k/m -c/m];
+D = [0; 0; 1/m];
+
+SYS = ss(A,B,C,D);
+
+t = 0:0.1:10;
+
+u_step = ones(size(t));
+[y_step, t_step, x_step] = lsim(SYS, u_step, t);
+
+figure;
+subplot(3,1,1);
+plot(t_step, y_step);
+title(<span class="string">'Resposta ao Degrau Unit&aacute;rio'</span>);
+xlabel(<span class="string">'Tempo (s)'</span>);
+ylabel(<span class="string">'Sa&iacute;das'</span>);
+
+u_impulse = [1 zeros(1, length(t)-1)];
+[y_impulse, t_impulse, x_impulse] = lsim(SYS, u_impulse, t);
+
+subplot(3,1,2);
+plot(t_impulse, y_impulse);
+title(<span class="string">'Resposta ao Impulso'</span>);
+xlabel(<span class="string">'Tempo (s)'</span>);
+ylabel(<span class="string">'Sa&iacute;das'</span>);
+
+u_sine = sin(2*pi*0.5*t);
+[y_sine, t_sine, x_sine] = lsim(SYS, u_sine, t);
+
+subplot(3,1,3);
+plot(t_sine, y_sine);
+title(<span class="string">'Resposta ao Sinal Senoidal (0.5 Hz)'</span>);
+xlabel(<span class="string">'Tempo (s)'</span>);
+ylabel(<span class="string">'Sa&iacute;das'</span>);
+
+figure;
+subplot(2,1,1);
+plot(t, x_step);
+title(<span class="string">'Vari&aacute;veis de Estado - Resposta ao Degrau'</span>);
+xlabel(<span class="string">'Tempo (s)'</span>);
+ylabel(<span class="string">'Estados'</span>);
+
+subplot(2,1,2);
+plot(t, x_sine);
+title(<span class="string">'Vari&aacute;veis de Estado - Resposta ao Sinal Senoidal'</span>);
+xlabel(<span class="string">'Tempo (s)'</span>);
+ylabel(<span class="string">'Estados'</span>);
+</pre>
+          <img vspace="5" hspace="5" src="pratica7_07.png" alt=""> <img vspace="5" hspace="5" src="pratica7_08.png"
+               alt="">
+          <h2 id="11">Ex 02 A</h2>
+          <pre class="codeinput">s = tf(<span class="string">'s'</span>);
+
+m = 1;
+c = 1;
+k = 1;
+
+G = 1 / (m * s^2 + c * s + k);
+
+disp(<span class="string">'Fun&ccedil;&atilde;o de Transfer&ecirc;ncia G(s):'</span>);
+G
+</pre>
+          <pre class="codeoutput">Fun&ccedil;&atilde;o de Transfer&ecirc;ncia G(s):
+
+G =
+ 
+       1
+  -----------
+  s^2 + s + 1
+ 
+Continuous-time transfer function.
+</pre>
+          <h2 id="12">Ex 02 B</h2>
+          <pre class="codeinput">s = tf(<span class="string">'s'</span>);
+m1 = 1;
+m2 = 2;
+k1 = 1000;
+k2 = 20;
+k3 = 20;
+b = 12;
+ut = 1;
+
+G1 = (m2*s^2+b*s+k2+k3)/((m1*s^2+b*s+k1+k2)*(m2*s^2+b*s+k2+k3)-(b*s+k2)^2);
+G2 = (b*s + k2)/((m1*s^2+b*s+k1+k2)*(m2*s^2+b*s+k2+k3)-(b*s+k2)^2);
+
+subplot(2,1,1);
+step(G1);
+subplot(2,1,2);
+step(G2);
+</pre>
+          <img vspace="5" hspace="5" src="pratica7_09.png" alt="">
+          <p>
+               - Posição (x1(t), x2(t)): Ambas as massas se moverão a partir da posição inicial até uma nova posição de equilíbrio devido à força aplicada de 1N.
+          </p>
+          
+          <p>
+               - Velocidade: Inicialmente, a velocidade é zero, aumentará com a aplicação da força, e eventualmente se estabilizará à medida que a posição de equilíbrio é atingida.
+          </p>
+          
+          <p>
+               - Aceleração: A aceleração será máxima no momento inicial da aplicação da força e diminuirá com o tempo à medida que as massas se aproximam da posição de equilíbrio.
+          </p>
+          
+          <h2 id="13">Ex 02 C</h2>
+          <pre class="codeinput">m1 = 1;
+m2 = 2;
+k1 = 1000;
+k2 = 20;
+k3 = 20;
+b = 12;
+
+A =[0 1 0 0 ; -(k1+k2)/m1 -b/m1 k2/m1 b/m1 ; 0 0 0 1 ; k2/m2 b/m2 -(k2+k3)/m2 -b/m2];
+B =[0 ; 1/m1 ; 0 ; 0];
+C =[1 0 0 0 ; 0 1 0 0 ; -(k1+k2)/m1 -b/m1 k2/m1 b/m1 ; 0 0 1 0 ; 0 0 0 1 ; k2/m1 b/m2 -(k2+k3)/m2 -b/m2];
+D =[0 ; 0 ; 1/m1 ; 0 ; 0 ; 0];
+
+SYS = ss(A,B,C,D);
+</pre>
+<p>
+     kmklvcxz
+</p>
+
+
+          <h2 id="14">Ex 02 D</h2>
+          <pre class="codeinput">m1 = 1;
+m2 = 2;
+k1 = 100;
+k2 = 20;
+k3 = 20;
+b = 12;
+
+A = [0 1 0 0;
+     -(k1+k2)/m1 -b/m1 k2/m1 b/m1;
+     0 0 0 1;
+     k2/m2 b/m2 -(k2+k3)/m2 -b/m2];
+
+B = [0; 1/m1; 0; 0];
+
+C = [1 0 0 0;
+     0 1 0 0;
+     -(k1+k2)/m1 -b/m1 k2/m1 b/m1;
+     0 0 1 0;
+     0 0 0 1;
+     k2/m2 b/m2 -(k2+k3)/m2 -b/m2];
+
+D = [0; 0; 1/m1; 0; 0; 0];
+
+SYS = ss(A,B,C,D);
+
+t = 0:0.1:10;
+u_step = ones(size(t));
+[y_step, t_step, x_step] = lsim(SYS, u_step, t);
+
+figure;
+subplot(3,1,1);
+plot(t_step, y_step);
+title(<span class="string">'Resposta ao Degrau Unit&aacute;rio'</span>);
+xlabel(<span class="string">'Tempo (s)'</span>);
+ylabel(<span class="string">'Sa&iacute;das'</span>);
+
+u_impulse = [1 zeros(1, length(t)-1)];
+[y_impulse, t_impulse, x_impulse] = lsim(SYS, u_impulse, t);
+
+subplot(3,1,2);
+plot(t_impulse, y_impulse);
+title(<span class="string">'Resposta ao Impulso'</span>);
+xlabel(<span class="string">'Tempo (s)'</span>);
+ylabel(<span class="string">'Sa&iacute;das'</span>);
+
+u_sine = sin(2*pi*0.5*t);
+[y_sine, t_sine, x_sine] = lsim(SYS, u_sine, t);
+
+subplot(3,1,3);
+plot(t_sine, y_sine);
+title(<span class="string">'Resposta ao Sinal Senoidal (0.5 Hz)'</span>);
+xlabel(<span class="string">'Tempo (s)'</span>);
+ylabel(<span class="string">'Sa&iacute;das'</span>);
+
+figure;
+subplot(2,1,1);
+plot(t, x_step);
+title(<span class="string">'Vari&aacute;veis de Estado - Resposta ao Degrau'</span>);
+xlabel(<span class="string">'Tempo (s)'</span>);
+ylabel(<span class="string">'Estados'</span>);
+
+subplot(2,1,2);
+plot(t, x_sine);
+title(<span class="string">'Vari&aacute;veis de Estado - Resposta ao Sinal Senoidal'</span>);
+xlabel(<span class="string">'Tempo (s)'</span>);
+ylabel(<span class="string">'Estados'</span>);
+</pre>
+          <img vspace="5" hspace="5" src="pratica7_10.png" alt=""> <img vspace="5" hspace="5" src="pratica7_11.png"
+               alt="">
+          <p class="footer">
+               <br>
+               <a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2024a</a>
+               <br>
+          </p>
+     </div>
+     <!--
+##### SOURCE BEGIN #####
+%% Laboratoio sistemas dinâmicos
+% Pratica 07 
+% 15/07/2024
+% Autores:  Victor Hugo Daia Lorenzato e Whilker Henrique Santos Silva
+
+%% Limpar workspcade
+close all;
+clear;
+clc;
+
+
+%% Ex01 A
+
+m = 1; 
+c = 1; 
+k = 1;  
+
+s = tf('s');
+G = 1 / (m*s^2 + c*s + k);
+
+disp('Função de Transferência G(s):');
+G
+
+%% Ex 01 B
+
+s = tf('s');
+
+m = 1;
+k = 1;
+c = 1;
+x_t = 1;
+
+y_t = (x_t/k)/((1+(s^2 * m)/k) + ((c*s)/k));
+
+step(y_t);
+
+%% Ex 01 C
+
+s = tf('s');
+
+m = 1;
+k = 4;
+c = 1;
+x_t = 1;
+
+y_t = (x_t/k)/((1+(s^2 * m)/k) + ((c*s)/k));
+
+step(y_t);
+
+%% Ex 01 D
+
+s = tf('s');
+
+m = 1;
+k = 1;
+c = 4;
+x_t = 1;
+
+y_t = (x_t/k)/((1+(s^2 * m)/k) + ((c*s)/k));
+
+step(y_t);
+
+%% Ex 01 E (Para B)
+
+s = tf('s');
+
+m = 1;
+k = 1;
+c = 1;
+x_t = 1;
+
+y_t = (x_t/k)/((1+(s^2 * m)/k) + ((c*s)/k));
+
+bode(y_t);
+
+%% Ex 01 E (Para C)
+
+s = tf('s');
+
+m = 1;
+k = 4;
+c = 1;
+x_t = 1;
+
+y_t = (x_t/k)/((1+(s^2 * m)/k) + ((c*s)/k));
+
+bode(y_t);
+
+%% Ex 01 E (Para D)
+
+s = tf('s');
+
+m = 1;
+k = 1;
+c = 4;
+x_t = 1;
+
+y_t = (x_t/k)/((1+(s^2 * m)/k) + ((c*s)/k));
+
+bode(y_t);
+
+%% Ex 01 F
+
+m = 1;
+k = 1;
+c = 1;
+A =[0 1 ; -k/m -c/m];
+B =[0 ; 1/m];
+C =[1 0 ; 0 1 ; -k/m -c/m];
+D =[0 ; 0 ; 1/m];
+SYS = ss(A,B,C,D);
+
+%% Ex 01 G
+
+m = 1;
+k = 1;
+c = 1;
+
+A = [0 1; -k/m -c/m];
+B = [0; 1/m];
+C = [1 0; 0 1; -k/m -c/m];
+D = [0; 0; 1/m];
+
+SYS = ss(A,B,C,D);
+
+t = 0:0.1:10;
+
+u_step = ones(size(t));
+[y_step, t_step, x_step] = lsim(SYS, u_step, t);
+
+figure;
+subplot(3,1,1);
+plot(t_step, y_step);
+title('Resposta ao Degrau Unitário');
+xlabel('Tempo (s)');
+ylabel('Saídas');
+
+u_impulse = [1 zeros(1, length(t)-1)];
+[y_impulse, t_impulse, x_impulse] = lsim(SYS, u_impulse, t);
+
+subplot(3,1,2);
+plot(t_impulse, y_impulse);
+title('Resposta ao Impulso');
+xlabel('Tempo (s)');
+ylabel('Saídas');
+
+u_sine = sin(2*pi*0.5*t);
+[y_sine, t_sine, x_sine] = lsim(SYS, u_sine, t);
+
+subplot(3,1,3);
+plot(t_sine, y_sine);
+title('Resposta ao Sinal Senoidal (0.5 Hz)');
+xlabel('Tempo (s)');
+ylabel('Saídas');
+
+figure;
+subplot(2,1,1);
+plot(t, x_step);
+title('Variáveis de Estado - Resposta ao Degrau');
+xlabel('Tempo (s)');
+ylabel('Estados');
+
+subplot(2,1,2);
+plot(t, x_sine);
+title('Variáveis de Estado - Resposta ao Sinal Senoidal');
+xlabel('Tempo (s)');
+ylabel('Estados');
+
+
+%% Ex 02 A
+
+s = tf('s');
+
+m = 1; 
+c = 1;
+k = 1;
+
+G = 1 / (m * s^2 + c * s + k);
+
+disp('Função de Transferência G(s):');
+G
+
+%% Ex 02 B
+
+s = tf('s');
+m1 = 1;
+m2 = 2;
+k1 = 1000;
+k2 = 20;
+k3 = 20;
+b = 12;
+ut = 1;
+
+G1 = (m2*s^2+b*s+k2+k3)/((m1*s^2+b*s+k1+k2)*(m2*s^2+b*s+k2+k3)-(b*s+k2)^2);
+G2 = (b*s + k2)/((m1*s^2+b*s+k1+k2)*(m2*s^2+b*s+k2+k3)-(b*s+k2)^2);
+
+subplot(2,1,1);
+step(G1);
+subplot(2,1,2); 
+step(G2);
+
+%% Ex 02 C
+
+m1 = 1;
+m2 = 2;
+k1 = 1000;
+k2 = 20;
+k3 = 20;
+b = 12;
+
+A =[0 1 0 0 ; -(k1+k2)/m1 -b/m1 k2/m1 b/m1 ; 0 0 0 1 ; k2/m2 b/m2 -(k2+k3)/m2 -b/m2];
+B =[0 ; 1/m1 ; 0 ; 0];
+C =[1 0 0 0 ; 0 1 0 0 ; -(k1+k2)/m1 -b/m1 k2/m1 b/m1 ; 0 0 1 0 ; 0 0 0 1 ; k2/m1 b/m2 -(k2+k3)/m2 -b/m2];
+D =[0 ; 0 ; 1/m1 ; 0 ; 0 ; 0];
+
+SYS = ss(A,B,C,D);
+
+%% Ex 02 D
+
+m1 = 1;
+m2 = 2;
+k1 = 100;
+k2 = 20;
+k3 = 20;
+b = 12;
+
+A = [0 1 0 0;
+     -(k1+k2)/m1 -b/m1 k2/m1 b/m1;
+     0 0 0 1;
+     k2/m2 b/m2 -(k2+k3)/m2 -b/m2];
+ 
+B = [0; 1/m1; 0; 0];
+
+C = [1 0 0 0;
+     0 1 0 0;
+     -(k1+k2)/m1 -b/m1 k2/m1 b/m1;
+     0 0 1 0;
+     0 0 0 1;
+     k2/m2 b/m2 -(k2+k3)/m2 -b/m2];
+ 
+D = [0; 0; 1/m1; 0; 0; 0];
+
+SYS = ss(A,B,C,D);
+
+t = 0:0.1:10;
+u_step = ones(size(t));
+[y_step, t_step, x_step] = lsim(SYS, u_step, t);
+
+figure;
+subplot(3,1,1);
+plot(t_step, y_step);
+title('Resposta ao Degrau Unitário');
+xlabel('Tempo (s)');
+ylabel('Saídas');
+
+u_impulse = [1 zeros(1, length(t)-1)];
+[y_impulse, t_impulse, x_impulse] = lsim(SYS, u_impulse, t);
+
+subplot(3,1,2);
+plot(t_impulse, y_impulse);
+title('Resposta ao Impulso');
+xlabel('Tempo (s)');
+ylabel('Saídas');
+
+u_sine = sin(2*pi*0.5*t);
+[y_sine, t_sine, x_sine] = lsim(SYS, u_sine, t);
+
+subplot(3,1,3);
+plot(t_sine, y_sine);
+title('Resposta ao Sinal Senoidal (0.5 Hz)');
+xlabel('Tempo (s)');
+ylabel('Saídas');
+
+figure;
+subplot(2,1,1);
+plot(t, x_step);
+title('Variáveis de Estado - Resposta ao Degrau');
+xlabel('Tempo (s)');
+ylabel('Estados');
+
+subplot(2,1,2);
+plot(t, x_sine);
+title('Variáveis de Estado - Resposta ao Sinal Senoidal');
+xlabel('Tempo (s)');
+ylabel('Estados');
+##### SOURCE END #####
+-->
+</body>
+
+</html>
