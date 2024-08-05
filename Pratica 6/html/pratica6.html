@@ -26,7 +26,7 @@ a { color:#005fce; text-decoration:none; }
 a:hover { color:#005fce; text-decoration:underline; }
 a:visited { color:#004aa0; text-decoration:none; }
 
-p { padding:0px; margin:0px 0px 20px; }
+p { padding:0px; margin:3em; font-size: medium; text-align: justify; text-indent: 30px; line-height: 2em;}
 img { padding:0px; margin:0px 0px 20px; border:none; }
 p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; }
 
@@ -71,14 +71,14 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 
 
 
-
   </style>
 </head>
 <body>
 <div class="content">
 <h1>Laborat&oacute;rio de Sistemas Din&acirc;icos</h1>
 <!--introduction-->
-<p>Pr&aacute;tica 06 08/07/2024 Autores: Victor Hugo Daia Lorenzato e Whilker Henrique Santos Silva</p>
+<p>Prática 06</p>
+<p> Autores: Victor Hugo Daia Lorenzato e Whilker Henrique Santos Silva.</p>
 <!--/introduction-->
 <h2>Contents</h2>
 <div>
@@ -206,7 +206,11 @@ num/den =
    ------------
    0.0001 s + 1
 </pre>
-<img vspace="5" hspace="5" src="pratica6_01.png" alt=""> <h2 id="4">Ex01 C</h2>
+<img vspace="5" hspace="5" src="pratica6_01.png" alt=""> 
+
+<p>conforme pode ser obeservado no gráfico da resposta do circuito RC, a tensão Vc tem um crescimento caracteristíco de um sistema de primeira ordem atingindo aproximadamente 0,63v em uma constante de tempo igual a RC, que neste é 0,0001 segundo. Por fim, com o tempo tendendo ao infinito ou seja, em regime permanente a tensão é igual a 1v.</p>
+
+<h2 id="4">Ex01 C</h2>
 <pre class="codeinput">step(G1_S.num{1}, G1_S.den{1});
 hold <span class="string">on</span>;
 
@@ -219,7 +223,10 @@ grid(<span class="string">'on'</span>);
 legend(<span class="string">'R=100'</span>, <span class="string">'R=200'</span>);
 hold <span class="string">off</span>;
 </pre>
-<img vspace="5" hspace="5" src="pratica6_02.png" alt=""> <h2 id="5">Ex01 D</h2>
+<img vspace="5" hspace="5" src="pratica6_02.png" alt=""> 
+<p>Ao dobrar o valor de R, o esperado conforme mostrado no grfico da resposta de R = 100 e R = 200, o tempo em que o sistema leva para atigir o regime permanente é duas vezes maior, já a constante de tempo RC também é maior.</p>
+
+<h2 id="5">Ex01 D</h2>
 <pre class="codeinput">syms <span class="string">R</span> <span class="string">C</span> <span class="string">S</span>;
 G2_S = C*S/(R*C*S + 1);
 
@@ -235,7 +242,9 @@ fprintf(<span class="string">"    %s    \n"</span> + <span class="keyword">...</
 -----------
  C*R*S + 1
 </pre>
+
 <h2 id="6">Ex01 E</h2>
+
 <pre class="codeinput">r = 100;
 c = 1*10^-6;
 s = tf(<span class="string">'s'</span>);
@@ -245,8 +254,36 @@ G2_S = c*s/(r*c*s + 1);
 step(G2_S.num{1}, G2_S.den{1});
 grid(<span class="string">'on'</span>);
 </pre>
-<img vspace="5" hspace="5" src="pratica6_03.png" alt=""> <h2 id="7">Ex01 F</h2>
+<img vspace="5" hspace="5" src="pratica6_03.png" alt=""> 
+<p>Conforme era esperado a corrente no capacitor tem um comportamento de uma exponecial decrescente tendendo a zero no tempo infinito</p>
+
+<h2 id="7">Ex01 F</h2>
+<p>
+        No primeiro caso, foi possivel observar o valor a carga do capacitor durante o tempo, na qual pode ser representada por uma curva caracteristíca de um sistema de ordem 1, e que, a constante de tempo desse sistema igual a RC.
+</p>
+<p>
+        Já no segundo caso, é possivel ver como a corrente se comporta em um circuito RC e observar que conferme a carga no capacitor vai se aproximado do máximo, ou seja Vc se iguala a tensão da fonte, a corrente no circuito se aproxima de zero já que não há diferença de pontencial entre a fonte e o capacitor.
+</p>
+
 <h2 id="8">Ex01 G</h2>
+
+<p>De acordo com o teorema do valor final, quando S tende a 0 o valor final do sistema:</p>
+<p style="margin: 0px;">No caso B)</p>
+
+<pre class="codeoutput">  
+                 1
+           ------------  =  1
+           0.0001 s + 1
+</pre>
+
+<p style="margin: 0px;">No caso D)</p>
+
+<pre class="codeoutput"> 
+         0.000001 S    
+        -------------   =   0
+         0.0001S + 1
+</pre>
+
 <h2 id="9">Ex01 H</h2>
 <pre class="codeinput">R = 100;
 C = 1*10^-6;
@@ -258,6 +295,8 @@ D = [0; 1/R];
 
 sistema = ss(A, B, C, D);
 </pre>
+
+<img src="espaco1.jpg" alt="" style="width: 40em;">
 <h2 id="10">Ex01 H</h2>
 <pre class="codeinput">sistema.OutputName = {<span class="string">'Vc(t)'</span>,<span class="string">'I(t)'</span>};
 step(sistema);
@@ -289,13 +328,15 @@ step(G3_S);
 grid(<span class="string">'on'</span>);
 </pre>
 <pre class="codeoutput"> 
-num/den = 
- 
+num/den =  
          1
    -------------
    1e-06 s + 100
 </pre>
-<img vspace="5" hspace="5" src="pratica6_05.png" alt=""> <h2 id="13">Ex02 C</h2>
+<img vspace="5" hspace="5" src="pratica6_05.png" alt=""> 
+<p>conforme pode ser obeservado no gráfico da resposta do circuito RL, a corrente tem um crescimento caracteristíco de um sistema de primeira ordem atingindo aproximadamente 0,63v em uma constante de tempo igual a é 0,0001 segundo. Por fim, com o tempo tendendo ao infinito ou seja, em regime permanente a a corrente é igual a 10mA.</p>
+
+<h2 id="13">Ex02 C</h2>
 <pre class="codeinput">syms <span class="string">R</span> <span class="string">L</span> <span class="string">S</span>;
 G4_S = 1 - (R/(L*S+R));
 
@@ -311,7 +352,9 @@ fprintf(<span class="string">"    %s    \n"</span> + <span class="keyword">...</
 -----------
  R + L*S
 </pre>
+
 <h2 id="14">Ex02 D</h2>
+
 <pre class="codeinput">r = 100;
 l = 1*10^-6;
 s = tf(<span class="string">'s'</span>);
@@ -321,8 +364,43 @@ G4_S = l*s/(l*s + r);
 step(G4_S.num{1}, G4_S.den{1});
 grid(<span class="string">'on'</span>);
 </pre>
-<img vspace="5" hspace="5" src="pratica6_06.png" alt=""> <h2 id="15">Ex02 E</h2>
+<img vspace="5" hspace="5" src="pratica6_06.png" alt=""> 
+
+<p>
+        Conforme mostrado no gráfico a tensão no indutor tende a zero no tempo tendendo a infinito.
+</p>
+
+<h2 id="15">Ex02 E</h2>
+
+<p>
+        Conforme mostrado nos gráfico da corrente e da tensão no indutor, quando o sistema atinge o regime permanete, a corrente do sistema se mantem contante em aproximadamente 10mA, como a tensão no indutor é diretamento proporcional a variação da corrente, se a corrente se mantem contante a tensão sobre o indutor é nula, conforme é possivel observar no gráfico da letra D.
+
+</p>
+
 <h2 id="16">Ex02 J</h2>
+
+<p>De acordo com o teorema do valor final, quando S tende a 0 o valor final do sistema:</p>
+<p style="margin: 0px;">No caso B)</p>
+
+<pre class="codeoutput">  
+            0.01
+        -------------  =   0.01
+         0.0001s + 1
+</pre>
+
+<p style="margin: 0px;">No caso D)</p>
+
+<pre class="codeoutput"> 
+          0.0001 S    
+        -------------   =   0
+         0.0001S + 1
+</pre>
+
+<p>
+        Ao coparar o comportamento do circuito RC com RL é possivel observer uma certa semelação, porém com as gradezas invertidas, no RC a tenção tem um tem um crescimente já no RL a corrente que cresce, Enquando a corrente tende a zero no RC, é a tensão sobre o indutor que tende a zero no RL. 
+</p>
+
+
 <h2 id="17">Ex02 K</h2>
 <pre class="codeinput">R = 100;
 L = 1*10^-6;
@@ -334,6 +412,8 @@ D = [1; 0; 0];
 
 sistema = ss(A, B, C, D);
 </pre>
+<img src="espaco2.jpg" alt=""style="width: 40em;">
+
 <h2 id="18">Ex02 L</h2>
 <pre class="codeinput">sistema.OutputName = {<span class="string">'Vl(t)'</span>, <span class="string">'Vr(t)'</span>, <span class="string">'I(t)'</span>};
 step(sistema);
@@ -372,7 +452,12 @@ num/den =
    ------------------------
    1e-12 s^2 + 0.0001 s + 1
 </pre>
-<img vspace="5" hspace="5" src="pratica6_08.png" alt=""> <h2 id="21">Ex03 C</h2>
+<img vspace="5" hspace="5" src="pratica6_08.png" alt=""> 
+
+<p>A analisar o grafico pode-se observar que a resposta parece ser de um sistema de preimeira ordem, porém se trata de um sista de segunda ordem, sobre amortecdido com pólos distitos e distentes entre si o que faz a resposta do se sistema se aproximar de um sistema de primeira ordem. O ganho dc observado do sistema é igual a 5</p>
+
+
+<h2 id="21">Ex03 C</h2>
 <pre class="codeinput">syms <span class="string">R</span> <span class="string">L</span> <span class="string">C</span> <span class="string">S</span>;
 G6_S = C*S/(L*C*S^2 + R*C*S + 1);
 
@@ -405,8 +490,36 @@ num/den =
    ------------------------
    1e-12 s^2 + 0.0001 s + 1
 </pre>
-<img vspace="5" hspace="5" src="pratica6_09.png" alt=""> <h2 id="23">Ex03 E</h2>
+<img vspace="5" hspace="5" src="pratica6_09.png" alt="">
+
+<p>
+        A corrente do sistem tende a zero em regime permanete.
+</p>
+
+<h2 id="23">Ex03 E</h2>
+<p>
+        Conforme mostrado nos gráfico da tensão e corrente do sistema, quando o sistema atinge o regime permanete, a diferença de potencial entre a fonte e o capacitor é zero, fazendo com que a corrente do sistema seja nula.
+</p>
+
 <h2 id="24">Ex03 F</h2>
+<p>De acordo com o teorema do valor final, quando S tende a 0 o valor final do sistema:</p>
+<p style="margin: 0px;">No caso B)</p>
+
+<pre class="codeoutput">  
+                   5
+        ------------------------   =   5
+        1e-12 s^2 + 0.0001 s + 1
+</pre>
+
+<p style="margin: 0px;">No caso D)</p>
+
+<pre class="codeoutput"> 
+                5e-06 s
+        --------------------------   =  0
+         1e-12 s^2 + 0.0001 s + 1
+</pre>
+
+
 <h2 id="25">Ex03 G</h2>
 <pre class="codeinput">
 <span class="comment">%compara&ccedil;&atilde;o Vc</span>
@@ -441,7 +554,12 @@ title(<span class="string">'I(t)'</span>)
 legend(<span class="string">'R=100'</span>, <span class="string">'R=200'</span>);
 hold <span class="string">off</span>;
 </pre>
-<img vspace="5" hspace="5" src="pratica6_10.png" alt=""> <img vspace="5" hspace="5" src="pratica6_11.png" alt=""> <h2 id="26">Ex03 H</h2>
+<img vspace="5" hspace="5" src="pratica6_10.png" alt=""> <img vspace="5" hspace="5" src="pratica6_11.png" alt=""> 
+
+<p>Ao dobrar o valor do de R pode-se perceber que o tempo para o sistema atingir o regime permante quase que dobrou também, porém o tempo gasto não é exatamente o dobro os o indutor também influencia na velocidade do sistema, já que ele limita a corrente de nos inicio da resposta devido a tendencia de uma grande variação na correte no inicio da resposta, fazendo com que o indutor tenha uma reatancia alta.</p>
+
+
+<h2 id="26">Ex03 H</h2>
 <pre class="codeinput">R = 100;
 L = 1*10^-6;
 c = 1*10^-6;
@@ -453,6 +571,8 @@ D = [0; 1; 0; 0];
 
 sistema = ss(A, B, C, D);
 </pre>
+
+<img src="espaco3.jpg" alt="" style="width: 40em;">
 <h2 id="27">Ex03 I</h2>
 <pre class="codeinput">sistema.OutputName = {<span class="string">'Vc(t)'</span>, <span class="string">'Vl(t)'</span>, <span class="string">'Vr(t)'</span>, <span class="string">'I(t)'</span>};
 step(sistema);
@@ -474,8 +594,16 @@ bode(G5_S);
 title(<span class="string">'G5(s)'</span>);
 grid(<span class="string">'on'</span>);
 </pre>
-<img vspace="5" hspace="5" src="pratica6_13.png" alt=""> <img vspace="5" hspace="5" src="pratica6_14.png" alt=""> <img vspace="5" hspace="5" src="pratica6_15.png" alt=""> <p class="footer">
-<br>
+<img vspace="5" hspace="5" src="pratica6_13.png" alt=""> <br>
+<p>É possivel observar uma atenuação em frequências maiores que 5.000 rad/s e uma defasagem de -90° entre as baixas e altas frequências. </p>
+
+<img vspace="5" hspace="5" src="pratica6_14.png" alt=""> <br>
+<p>É possivel observar uma atenuação em frequências menores que 10.000 rad/s e uma defasagem de -90° entre as baixas e altas frequências. </p>
+
+<img vspace="5" hspace="5" src="pratica6_15.png" alt=""> <br>
+<p>É possivel observar uma atenuação em frequÊncias maiores que 5000 rad/s, porém com ganho deslocado em aproximadente 15 dB e uma defasagem de -90° entre as baixas e altas frequencias. </p>
+
+<p class="footer"></p>
 <a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2024a</a>
 <br>
 </p>
