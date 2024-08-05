@@ -1,0 +1,682 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      -->
+<title>Laborat&oacute;rio de Sistemas Din&acirc;icos</title>
+<meta name="generator" content="MATLAB 24.1">
+<link rel="schema.DC" href="http://purl.org/dc/elements/1.1/">
+<meta name="DC.date" content="2024-08-04">
+<meta name="DC.source" content="pratica8.m">
+<style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:3em; font-size: medium; text-align: justify; text-indent: 30px; line-height: 2em;}
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; }
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+span.typesection { color:#A0522D }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style>
+</head>
+<body>
+<div class="content">
+<h1>Laborat&oacute;rio de Sistemas Din&acirc;icos</h1>
+<!--introduction-->
+<p>Pr&aacute;tica 08 28/07/2024 Autores: Victor Hugo Daia Lorenzato e Whilker Henrique Santos Silva</p>
+<!--/introduction-->
+<h2>Contents</h2>
+<div>
+<ul>
+<li>
+<a href="#1">Limpar workspcade</a>
+</li>
+<li>
+<a href="#2">Ex 01 A</a>
+</li>
+<li>
+<a href="#3">Ex 01 B</a>
+</li>
+<li>
+<a href="#4">Ex 01 C</a>
+</li>
+<li>
+<a href="#5">Ex 01 D</a>
+</li>
+<li>
+<a href="#6">Ex 01 E</a>
+</li>
+<li>
+<a href="#7">Ex 01 F</a>
+</li>
+<li>
+<a href="#8">Ex 02 A</a>
+</li>
+<li>
+<a href="#9">Ex 02 B</a>
+</li>
+<li>
+<a href="#10">Ex 02 C</a>
+</li>
+<li>
+<a href="#11">Ex 02 D</a>
+</li>
+</ul>
+</div>
+<h2 id="1">Limpar workspcade</h2>
+<pre class="codeinput">close <span class="string">all</span>;
+clear;
+clc;
+</pre>
+<h2 id="2">Ex 01 A</h2>
+<pre class="codeinput">syms <span class="string">A</span> <span class="string">R</span> <span class="string">s</span>
+G1 = 1 / (A * s + 1 / R);
+G2 = 1 / (A * R * s + 1);
+
+[num, den] = numden(G1);
+
+
+fprintf (<span class="string">"  %s  \n"</span> + <span class="keyword">...</span>
+         <span class="string">"------\n"</span> + <span class="keyword">...</span>
+          <span class="string">"%s\n\n\n"</span>   ,num,den);
+
+[num, den] = numden(G2);
+
+fprintf (<span class="string">"  %s  \n"</span> + <span class="keyword">...</span>
+         <span class="string">"------\n"</span> + <span class="keyword">...</span>
+           <span class="string">"%s\n"</span>   ,num,den);
+</pre>
+<pre class="codeoutput">  R  
+------
+A*R*s + 1
+
+
+  1  
+------
+A*R*s + 1
+</pre>
+<h2 id="3">Ex 01 B</h2>
+<pre class="codeinput">A = 2;
+R = 10;
+
+s = tf(<span class="string">'s'</span>);
+G1 = 1 / (A * s + 1 / R);
+G2 = 1 / (A * R * s + 1);
+
+t = 0:0.1:100;
+
+Q_i = ones(size(t));
+
+H = lsim(G1, Q_i, t);
+Q_o = lsim(G2, Q_i, t);
+
+figure;
+subplot(2,1,1);
+plot(t, H);
+title(<span class="string">'Altura do Fluido h(t)'</span>);
+xlabel(<span class="string">'Tempo (s)'</span>);
+ylabel(<span class="string">'h(t) (m)'</span>);
+
+subplot(2,1,2);
+plot(t, Q_o);
+title(<span class="string">'Vaz&atilde;o de Sa&iacute;da Q_o(t)'</span>);
+xlabel(<span class="string">'Tempo (s)'</span>);
+ylabel(<span class="string">'Q_o(t) (m^3/s)'</span>);
+
+</pre>
+
+<img vspace="5" hspace="5" src="pratica8_01.png" alt=""> 
+
+<p>Quando aplica-se uma entrada constante de 1m³/s a altura de fluido do tanque 1, inicialmente aumenta rapidamente. Isso ocorre porque o tanque está recebendo um fluxo contínuo de entrada. À medida que o tempo passa, a taxa de aumento da altura do fluido no tanque atinge um valor constante. Isso se dá pelo equilíbrio alcançado entre entrada e saída através da válvula.</p>
+
+<h2 id="4">Ex 01 C</h2>
+<pre class="codeinput">
+<span class="comment">Se a área do tanque aumenta, a constante A na função de transferência aumenta.
+Isso implica que o sistema terá uma resposta mais lenta, já que o termo no denominador da função de transferência aumentará, reduzindo a velocidade de resposta do sistema.</span>
+</pre>
+<h2 id="5">Ex 01 D</h2>
+<pre class="codeinput">
+<span class="comment">Para um sistema estável, a altura do fluido tende a se estabilizar. Logo, a vazão de saída tenderá a se igualar à vazão de entrada.</span>
+</pre>
+<h2 id="6">Ex 01 E</h2>
+<pre class="codeinput">A = 2;
+R = 10;
+
+s = tf(<span class="string">'s'</span>);
+G1 = 1 / (A * s + 1 / R);
+G2 = 1 / (A * R * s + 1);
+
+figure;
+bode(G1);
+title(<span class="string">'Diagrama de Bode de G1(s)'</span>);
+
+figure;
+bode(G2);
+title(<span class="string">'Diagrama de Bode de G2(s)'</span>);
+</pre>
+<img vspace="5" hspace="5" src="pratica8_02.png" alt=""> <img vspace="5" hspace="5" src="pratica8_03.png" alt=""> <h2 id="7">Ex 01 F</h2>
+<pre class="codeinput">A = 2;
+R = 10;
+
+A_matrix = [-1/(A*R)];
+B_matrix = [1/A];
+C_matrix = [1/R];
+D_matrix = [0];
+
+sys = ss(A_matrix, B_matrix, C_matrix, D_matrix);
+
+disp(<span class="string">'Sistema de espa&ccedil;o de estados:'</span>);
+disp(sys);
+
+t = 0:0.1:100;
+
+Q_i = ones(size(t));
+
+[y, t, x] = lsim(sys, Q_i, t);
+
+figure;
+subplot(2,1,1);
+plot(t, x);
+title(<span class="string">'Resposta do Estado h(t)'</span>);
+xlabel(<span class="string">'Tempo (s)'</span>);
+ylabel(<span class="string">'h(t) (m)'</span>);
+
+subplot(2,1,2);
+plot(t, y);
+title(<span class="string">'Resposta da Sa&iacute;da Q_o(t)'</span>);
+xlabel(<span class="string">'Tempo (s)'</span>);
+ylabel(<span class="string">'Q_o(t) (m^3/s)'</span>);
+</pre>
+<pre class="codeoutput">Sistema de espa&ccedil;o de estados:
+  ss with properties:
+
+                A: -0.0500
+                B: 0.5000
+                C: 0.1000
+                D: 0
+                E: []
+          Offsets: []
+           Scaled: 0
+        StateName: {''}
+        StatePath: {''}
+        StateUnit: {''}
+    InternalDelay: [0&times;1 double]
+       InputDelay: 0
+      OutputDelay: 0
+        InputName: {''}
+        InputUnit: {''}
+       InputGroup: [1&times;1 struct]
+       OutputName: {''}
+       OutputUnit: {''}
+      OutputGroup: [1&times;1 struct]
+            Notes: [0&times;1 string]
+         UserData: []
+             Name: ''
+               Ts: 0
+         TimeUnit: 'seconds'
+     SamplingGrid: [1&times;1 struct]
+
+</pre>
+<img vspace="5" hspace="5" src="pratica8_04.png" alt=""> <h2 id="8">Ex 02 A</h2>
+<pre class="codeinput">C1 = 1.5;
+C2 = 2;
+R1 = 1;
+R2 = 5;
+
+A = [-1/(C1*R1) 0; 1/(C2*R1) -1/(C2*R2)];
+B = [1/C1 0; 0 1/C2];
+C = [1 0; 0 1; 1/R1 0; 0 1/R2];
+D = [0 0; 0 0; 0 0; 0 0];
+
+sys = ss(A, B, C, D);
+
+disp(<span class="string">'Sistema de espa&ccedil;o de estados:'</span>);
+disp(sys);
+</pre>
+<pre class="codeoutput">Sistema de espa&ccedil;o de estados:
+  4&times;2 ss array with properties:
+
+                A: [2&times;2 double]
+                B: [2&times;2 double]
+                C: [4&times;2 double]
+                D: [4&times;2 double]
+                E: []
+          Offsets: []
+           Scaled: 0
+        StateName: {2&times;1 cell}
+        StatePath: {2&times;1 cell}
+        StateUnit: {2&times;1 cell}
+    InternalDelay: [0&times;1 double]
+       InputDelay: [2&times;1 double]
+      OutputDelay: [4&times;1 double]
+        InputName: {2&times;1 cell}
+        InputUnit: {2&times;1 cell}
+       InputGroup: [1&times;1 struct]
+       OutputName: {4&times;1 cell}
+       OutputUnit: {4&times;1 cell}
+      OutputGroup: [1&times;1 struct]
+            Notes: [0&times;1 string]
+         UserData: []
+             Name: ''
+               Ts: 0
+         TimeUnit: 'seconds'
+     SamplingGrid: [1&times;1 struct]
+
+</pre>
+<h2 id="9">Ex 02 B</h2>
+<pre class="codeinput">t = 0:0.1:100;
+
+q_i1 = ones(size(t));
+q_i2 = 3 * ones(size(t));
+u = [q_i1' q_i2'];
+
+[y, t, x] = lsim(sys, u, t);
+
+figure;
+subplot(4,1,1);
+plot(t, y(:,1));
+title(<span class="string">'Altura do Fluido no Tanque 1, h_1(t)'</span>);
+xlabel(<span class="string">'Tempo (s)'</span>);
+ylabel(<span class="string">'h_1(t) (m)'</span>);
+
+subplot(4,1,2);
+plot(t, y(:,2));
+title(<span class="string">'Altura do Fluido no Tanque 2, h_2(t)'</span>);
+xlabel(<span class="string">'Tempo (s)'</span>);
+ylabel(<span class="string">'h_2(t) (m)'</span>);
+
+subplot(4,1,3);
+plot(t, y(:,3));
+title(<span class="string">'Vaz&atilde;o de Sa&iacute;da do Tanque 1, q_{o1}(t)'</span>);
+xlabel(<span class="string">'Tempo (s)'</span>);
+ylabel(<span class="string">'q_{o1}(t) (m^3/s)'</span>);
+
+subplot(4,1,4);
+plot(t, y(:,4));
+title(<span class="string">'Vaz&atilde;o de Sa&iacute;da do Tanque 2, q_{o2}(t)'</span>);
+xlabel(<span class="string">'Tempo (s)'</span>);
+ylabel(<span class="string">'q_{o2}(t) (m^3/s)'</span>);
+</pre>
+<img vspace="5" hspace="5" src="pratica8_05.png" alt=""> <h2 id="10">Ex 02 C</h2>
+<pre class="codeinput">[num1, den1] = ss2tf(A, B, C, D, 1);
+G11 = tf(num1(1,:), den1);
+G21 = tf(num1(2,:), den1);
+
+[num2, den2] = ss2tf(A, B, C, D, 2);
+G12 = tf(num2(1,:), den2);
+G22 = tf(num2(2,:), den2);
+
+disp(<span class="string">'Fun&ccedil;&atilde;o de Transfer&ecirc;ncia G11(s):'</span>);
+G11
+
+disp(<span class="string">'Fun&ccedil;&atilde;o de Transfer&ecirc;ncia G12(s):'</span>);
+G12
+
+disp(<span class="string">'Fun&ccedil;&atilde;o de Transfer&ecirc;ncia G21(s):'</span>);
+G21
+
+disp(<span class="string">'Fun&ccedil;&atilde;o de Transfer&ecirc;ncia G22(s):'</span>);
+G22
+</pre>
+<pre class="codeoutput">Fun&ccedil;&atilde;o de Transfer&ecirc;ncia G11(s):
+
+G11 =
+ 
+     0.6667 s + 0.06667
+  ------------------------
+  s^2 + 0.7667 s + 0.06667
+ 
+Continuous-time transfer function.
+Fun&ccedil;&atilde;o de Transfer&ecirc;ncia G12(s):
+
+G12 =
+ 
+  0
+ 
+Continuous-time transfer function.
+Fun&ccedil;&atilde;o de Transfer&ecirc;ncia G21(s):
+
+G21 =
+ 
+           0.3333
+  ------------------------
+  s^2 + 0.7667 s + 0.06667
+ 
+Continuous-time transfer function.
+Fun&ccedil;&atilde;o de Transfer&ecirc;ncia G22(s):
+
+G22 =
+ 
+       0.5 s + 0.3333
+  ------------------------
+  s^2 + 0.7667 s + 0.06667
+ 
+Continuous-time transfer function.
+</pre>
+<h2 id="11">Ex 02 D</h2>
+<pre class="codeinput">[num1, den1] = ss2tf(A, B, C, D, 1);
+H1_1 = tf(num1(1,:), den1);
+H1_2 = tf(num1(2,:), den1);
+
+[num2, den2] = ss2tf(A, B, C, D, 2);
+H2_1 = tf(num2(1,:), den2);
+H2_2 = tf(num2(2,:), den2);
+
+disp(<span class="string">'Fun&ccedil;&atilde;o de Transfer&ecirc;ncia H1(s):'</span>);
+H1_1
+H1_2
+
+disp(<span class="string">'Fun&ccedil;&atilde;o de Transfer&ecirc;ncia H2(s):'</span>);
+H2_1
+H2_2
+</pre>
+<pre class="codeoutput">Fun&ccedil;&atilde;o de Transfer&ecirc;ncia H1(s):
+
+H1_1 =
+ 
+     0.6667 s + 0.06667
+  ------------------------
+  s^2 + 0.7667 s + 0.06667
+ 
+Continuous-time transfer function.
+
+H1_2 =
+ 
+           0.3333
+  ------------------------
+  s^2 + 0.7667 s + 0.06667
+ 
+Continuous-time transfer function.
+Fun&ccedil;&atilde;o de Transfer&ecirc;ncia H2(s):
+
+H2_1 =
+ 
+  0
+ 
+Continuous-time transfer function.
+
+H2_2 =
+ 
+       0.5 s + 0.3333
+  ------------------------
+  s^2 + 0.7667 s + 0.06667
+ 
+Continuous-time transfer function.
+</pre>
+<p class="footer">
+<br>
+<a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2024a</a>
+<br>
+</p>
+</div>
+<!--
+##### SOURCE BEGIN #####
+%% Laboratório de Sistemas Dinâicos
+% Prática 08
+% 28/07/2024
+% Autores: Victor Hugo Daia Lorenzato e Whilker Henrique Santos Silva
+
+%% Limpar workspcade
+close all;
+clear;
+clc;
+
+%% Ex 01 A
+
+syms A R s
+G1 = 1 / (A * s + 1 / R);
+G2 = 1 / (A * R * s + 1);
+
+[num, den] = numden(G1);
+
+
+fprintf ("  %s  \n" + ...
+         "REPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASH\n" + ...
+          "%s\n\n\n"   ,num,den);
+
+[num, den] = numden(G2);
+
+fprintf ("  %s  \n" + ...
+         "REPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASH\n" + ...
+           "%s\n"   ,num,den);
+
+%% Ex 01 B
+
+A = 2;  
+R = 10; 
+
+s = tf('s');
+G1 = 1 / (A * s + 1 / R);
+G2 = 1 / (A * R * s + 1);
+
+t = 0:0.1:100;
+
+Q_i = ones(size(t));
+
+H = lsim(G1, Q_i, t);
+Q_o = lsim(G2, Q_i, t);
+
+figure;
+subplot(2,1,1);
+plot(t, H);
+title('Altura do Fluido h(t)');
+xlabel('Tempo (s)');
+ylabel('h(t) (m)');
+
+subplot(2,1,2);
+plot(t, Q_o);
+title('Vazão de Saída Q_o(t)');
+xlabel('Tempo (s)');
+ylabel('Q_o(t) (m^3/s)');
+
+%% Ex 01 C
+
+% Se a área do tanque aumentasse de valor, o que você esperaria das respostas em b)?
+
+%% Ex 01 D
+
+% O que você espera de qo(t) à medida que o tempo tende ao infinito?
+
+%% Ex 01 E
+
+A = 2;  
+R = 10; 
+
+s = tf('s');
+G1 = 1 / (A * s + 1 / R);
+G2 = 1 / (A * R * s + 1);
+
+figure;
+bode(G1);
+title('Diagrama de Bode de G1(s)');
+
+figure;
+bode(G2);
+title('Diagrama de Bode de G2(s)');
+
+%% Ex 01 F
+
+A = 2; 
+R = 10; 
+
+A_matrix = [-1/(A*R)];
+B_matrix = [1/A];
+C_matrix = [1/R];
+D_matrix = [0];
+
+sys = ss(A_matrix, B_matrix, C_matrix, D_matrix);
+
+disp('Sistema de espaço de estados:');
+disp(sys);
+
+t = 0:0.1:100;
+
+Q_i = ones(size(t));
+
+[y, t, x] = lsim(sys, Q_i, t);
+
+figure;
+subplot(2,1,1);
+plot(t, x);
+title('Resposta do Estado h(t)');
+xlabel('Tempo (s)');
+ylabel('h(t) (m)');
+
+subplot(2,1,2);
+plot(t, y);
+title('Resposta da Saída Q_o(t)');
+xlabel('Tempo (s)');
+ylabel('Q_o(t) (m^3/s)');
+
+%% Ex 02 A
+
+C1 = 1.5;  
+C2 = 2;   
+R1 = 1;    
+R2 = 5;    
+
+A = [-1/(C1*R1) 0; 1/(C2*R1) -1/(C2*R2)];
+B = [1/C1 0; 0 1/C2];
+C = [1 0; 0 1; 1/R1 0; 0 1/R2];
+D = [0 0; 0 0; 0 0; 0 0];
+
+sys = ss(A, B, C, D);
+
+disp('Sistema de espaço de estados:');
+disp(sys);
+
+
+%% Ex 02 B
+
+t = 0:0.1:100;
+
+q_i1 = ones(size(t));
+q_i2 = 3 * ones(size(t));
+u = [q_i1' q_i2'];
+
+[y, t, x] = lsim(sys, u, t);
+
+figure;
+subplot(4,1,1);
+plot(t, y(:,1));
+title('Altura do Fluido no Tanque 1, h_1(t)');
+xlabel('Tempo (s)');
+ylabel('h_1(t) (m)');
+
+subplot(4,1,2);
+plot(t, y(:,2));
+title('Altura do Fluido no Tanque 2, h_2(t)');
+xlabel('Tempo (s)');
+ylabel('h_2(t) (m)');
+
+subplot(4,1,3);
+plot(t, y(:,3));
+title('Vazão de Saída do Tanque 1, q_{o1}(t)');
+xlabel('Tempo (s)');
+ylabel('q_{o1}(t) (m^3/s)');
+
+subplot(4,1,4);
+plot(t, y(:,4));
+title('Vazão de Saída do Tanque 2, q_{o2}(t)');
+xlabel('Tempo (s)');
+ylabel('q_{o2}(t) (m^3/s)');
+
+%% Ex 02 C
+
+[num1, den1] = ss2tf(A, B, C, D, 1);
+G11 = tf(num1(1,:), den1);
+G21 = tf(num1(2,:), den1);
+
+[num2, den2] = ss2tf(A, B, C, D, 2);
+G12 = tf(num2(1,:), den2);
+G22 = tf(num2(2,:), den2);
+
+disp('Função de Transferência G11(s):');
+G11
+
+disp('Função de Transferência G12(s):');
+G12
+
+disp('Função de Transferência G21(s):');
+G21
+
+disp('Função de Transferência G22(s):');
+G22
+
+%% Ex 02 D
+
+[num1, den1] = ss2tf(A, B, C, D, 1);
+H1_1 = tf(num1(1,:), den1);
+H1_2 = tf(num1(2,:), den1);
+
+[num2, den2] = ss2tf(A, B, C, D, 2);
+H2_1 = tf(num2(1,:), den2);
+H2_2 = tf(num2(2,:), den2);
+
+disp('Função de Transferência H1(s):');
+H1_1
+H1_2
+
+disp('Função de Transferência H2(s):');
+H2_1
+H2_2
+
+##### SOURCE END #####
+-->
+</body>
+</html>
