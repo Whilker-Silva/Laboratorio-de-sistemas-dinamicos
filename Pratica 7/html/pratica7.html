@@ -578,7 +578,8 @@ bode(y_t);
           </p>
 
           <p>
-               Essas variações são refletidas no gráfico de Bode, onde podemos observar como os parâmetros afetam a magnitude e a fase da resposta em frequência dos sistemas massa-mola-amortecedor.
+               Essas variações são refletidas no gráfico de Bode, onde podemos observar como os parâmetros afetam a
+               magnitude e a fase da resposta em frequência dos sistemas massa-mola-amortecedor.
           </p>
 
           <h2 id="9">Ex 01 F</h2>
@@ -690,17 +691,20 @@ step(G2);
 </pre>
           <img vspace="5" hspace="5" src="pratica7_09.png" alt="">
           <p>
-               - Posição (x1(t), x2(t)): Ambas as massas se moverão a partir da posição inicial até uma nova posição de equilíbrio devido à força aplicada de 1N.
+               - Posição (x1(t), x2(t)): Ambas as massas se moverão a partir da posição inicial até uma nova posição de
+               equilíbrio devido à força aplicada de 1N.
           </p>
-          
+
           <p>
-               - Velocidade: Inicialmente, a velocidade é zero, aumentará com a aplicação da força, e eventualmente se estabilizará à medida que a posição de equilíbrio é atingida.
+               - Velocidade: Inicialmente, a velocidade é zero, aumentará com a aplicação da força, e eventualmente se
+               estabilizará à medida que a posição de equilíbrio é atingida.
           </p>
-          
+
           <p>
-               - Aceleração: A aceleração será máxima no momento inicial da aplicação da força e diminuirá com o tempo à medida que as massas se aproximam da posição de equilíbrio.
+               - Aceleração: A aceleração será máxima no momento inicial da aplicação da força e diminuirá com o tempo à
+               medida que as massas se aproximam da posição de equilíbrio.
           </p>
-          
+
           <h2 id="13">Ex 02 C</h2>
           <pre class="codeinput">m1 = 1;
 m2 = 2;
@@ -716,9 +720,23 @@ D =[0 ; 0 ; 1/m1 ; 0 ; 0 ; 0];
 
 SYS = ss(A,B,C,D);
 </pre>
-<p>
-     kmklvcxz
-</p>
+          <p>
+               1- Resposta ao Degrau de G1 e G2: <br>
+               - O gráfico de G1 mostra como a posição de M2 (a segunda massa) responde a uma força de entrada unitária
+               constante ao longo do tempo. <br>
+               - O gráfico de G2 ostra como a posição de M1 (a primeira massa) responde à mesma força. <br>
+               - Estes gráficos ilustram as dinâmicas individuais de cada massa em termos de suas posições. <br>
+
+          </p>
+
+          <p>
+               2- Resposta ao Degrau do Sistema em Espaço de Estados: (posições e velocidades de m1 e m2). <br>
+               - As velocidades também são representadas, mostrando como a aplicação de uma força constante afeta a
+               velocidade das massas ao longo do tempo. <br>
+               - As respostas ao degrau devem mostrar que, inicialmente, as massas aceleram até que as forças
+               restauradoras das molas e amortecedores equilibram a força aplicada, levando o sistema a um novo
+               estado de equilíbrio.
+          </p>
 
 
           <h2 id="14">Ex 02 D</h2>
