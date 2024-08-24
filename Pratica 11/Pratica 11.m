@@ -1,6 +1,6 @@
 %% Laboratório de Sistemas Dinâicos
 % Prática 08
-% 28/07/2024
+% 22/08/2024
 % Autores: Victor Hugo Daia Lorenzato e Whilker Henrique Santos Silva
 
 %% Limpar workspcade
@@ -10,59 +10,95 @@ clc;
 
 %% Exercício 1
 
-% Carregar os dados do arquivo
 data = load('ensaio_prbs.txt');
-time = data(:, 1); % Coluna 1: tempo
-input = data(:, 2); % Coluna 2: entrada
-output = data(:, 3); % Coluna 3: saída
+time = data (:, 1);
+input = data (:, 2);
+output = data (:, 3);
 
-% a) Verificação do período de amostragem
-% Calcular a Função de Autocorrelação (FAC) da saída
 [acf, lags] = xcorr(output, 'coeff');
 
-% Encontrar o primeiro mínimo da FAC para determinar o período de amostragem adequado
-[min_acf, min_idx] = min(acf(lags > 0)); % Posição do mínimo
+positive_lags = lags(lags > 0);
+positive_acf = acf(lags > 0);
 
-% Verificar se o mínimo está no intervalo adequado
-lag_value = lags(min_idx);
+[min_acf, min_idx] = min(positive_acf);
+lag_value = positive_lags(min_idx);
+
 if lag_value >= 5 && lag_value <= 25
     disp('Período de amostragem adequado.');
 else
     disp('Período de amostragem não adequado. Realizando decimação...');
-    % Decimação dos dados para ajustar o período de amostragem
-    factor = floor(lag_value / 10); % Fator de decimação
-    time = downsample(time, factor);
-    input = downsample(input, factor);
-    output = downsample(output, factor);
+   
+    desired_lag = 15;  
+    factor = ceil(lag_value / desired_lag);
+
+    new_length = ceil(length(time) / factor);
+    
+    time_dec = interp1(1:length(time), time, linspace(1, length(time), new_length));
+    input_dec = interp1(1:length(input), input, linspace(1, length(input), new_length));
+    output_dec = interp1(1:length(output), output, linspace(1, length(output), new_length));
+    
+    disp(['Fator de decimação aplicado: ', num2str(factor)]);
+    disp(['Novo número de pontos: ', num2str(length(time_dec))]);
 end
 
-% b) Estimação dos parâmetros com MQ
-% Modelos ARX
-na1 = 1; nb1 = 1; nk1 = 1; % Modelo ARX(1,1)
-na2 = 2; nb2 = 2; nk2 = 1; % Modelo ARX(2,2)
+N = length(output);
 
-% Estimação dos parâmetros para o primeiro modelo ARX(1,1)
-model1 = arx([output input], [na1 nb1 nk1]);
+na = 2;  
+nb = 2; 
+nk = 1;  
 
-% Estimação dos parâmetros para o segundo modelo ARX(2,2)
-model2 = arx([output input], [na2 nb2 nk2]);
-
-% c) Comparação dos modelos
-% Simulação livre para ambos os modelos
-sim_output1 = sim(model1, input);
-sim_output2 = sim(model2, input);
-
-% Calcular o Erro Médio Quadrático (MSE) para ambos os modelos
-mse1 = immse(output, sim_output1);
-mse2 = immse(output, sim_output2);
-
-% Exibir os resultados
-disp(['MSE Modelo ARX(1,1): ', num2str(mse1)]);
-disp(['MSE Modelo ARX(2,2): ', num2str(mse2)]);
-
-% Comparar o desempenho dos modelos
-if mse1 < mse2
-    disp('O Modelo ARX(1,1) apresentou melhor desempenho.');
-else
-    disp('O Modelo ARX(2,2) apresentou melhor desempenho.');
+Phi = zeros(N-max(na, nb+nk-1), na + nb);
+for i = 1:na
+    Phi(:, i) = -output(max(na, nb+nk-1) + 1 - i : N - i);
 end
+for j = 1:nb
+    Phi(:, na + j) = input(max(na, nb+nk-1) + 1 - (j + nk - 1) : N - (j + nk - 1));
+end
+
+Y = output(max(na, nb+nk-1) + 1:N);
+
+theta = Phi \ Y;
+
+a = theta(1:na);
+b = theta(na+1:end);
+
+disp('Coeficientes do modelo ARX:');
+disp('a:');
+disp(a);
+disp('b:');
+disp(b);
+
+output_pred = filter([0; b], [1; a], input);
+
+time_adj = time(max(na, nb+nk-1) + 1:end);
+
+figure;
+plot(time_adj, output(max(na, nb+nk-1) + 1:end), 'b', 'DisplayName', 'Saída Real');
+hold on;
+plot(time_adj, output_pred(max(na, nb+nk-1) + 1:end), 'r--', 'DisplayName', 'Saída Estimada');
+legend;
+xlabel('Tempo');
+ylabel('Saída');
+title('Comparação entre Saída Real e Saída Estimada');
+grid on;
+
+a = [-1.3172; 0.3711];
+b = [0.0509; 4.3421];
+
+output_pred_sim = filter([0; b], [1; a], input);
+
+error = output(max(na, nb+nk-1) + 1:end) - output_pred_sim(max(na, nb+nk-1) + 1:end);
+
+EMQ = mean(error.^2);
+
+disp(['Erro Médio Quadrático (EMQ) em Simulação Livre: ', num2str(EMQ)]);
+
+figure;
+plot(time_adj, output(max(na, nb+nk-1) + 1:end), 'b', 'DisplayName', 'Saída Real');
+hold on;
+plot(time_adj, output_pred_sim(max(na, nb+nk-1) + 1:end), 'r--', 'DisplayName', 'Saída Estimada');
+legend;
+xlabel('Tempo');
+ylabel('Saída');
+title('Comparação entre Saída Real e Saída Estimada');
+grid on;
