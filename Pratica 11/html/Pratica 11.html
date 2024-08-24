@@ -1,0 +1,310 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      -->
+<title>Laborat&oacute;rio de Sistemas Din&acirc;icos</title>
+<meta name="generator" content="MATLAB 24.1">
+<link rel="schema.DC" href="http://purl.org/dc/elements/1.1/">
+<meta name="DC.date" content="2024-08-24">
+<meta name="DC.source" content="Pratica 11.m">
+<style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; }
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+span.typesection { color:#A0522D }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style>
+</head>
+<body>
+<div class="content">
+<h1>Laborat&oacute;rio de Sistemas Din&acirc;icos</h1>
+<!--introduction-->
+<p>Pr&aacute;tica 11 22/08/2024 Autores: Victor Hugo Daia Lorenzato e Whilker Henrique Santos Silva</p>
+
+<!--/introduction-->
+<h2>Contents</h2>
+<div>
+<ul>
+<li>
+<a href="#1">Limpar workspcade</a>
+</li>
+<li>
+<a href="#2">Exerc&iacute;cio 1</a>
+</li>
+</ul>
+</div>
+<h2 id="1">Limpar workspcade</h2>
+<pre class="codeinput">close <span class="string">all</span>;
+clear;
+clc;
+</pre>
+<h2 id="2">Exerc&iacute;cio 1</h2>
+<pre class="codeinput">data = load(<span class="string">'ensaio_prbs.txt'</span>);
+time = data (:, 1);
+input = data (:, 2);
+output = data (:, 3);
+
+[acf, lags] = xcorr(output, <span class="string">'coeff'</span>);
+
+positive_lags = lags(lags &gt; 0);
+positive_acf = acf(lags &gt; 0);
+
+[min_acf, min_idx] = min(positive_acf);
+lag_value = positive_lags(min_idx);
+
+<span class="keyword">if</span> lag_value &gt;= 5 &amp;&amp; lag_value &lt;= 25
+    disp(<span class="string">'Per&iacute;odo de amostragem adequado.'</span>);
+<span class="keyword">else</span>
+    disp(<span class="string">'Per&iacute;odo de amostragem n&atilde;o adequado. Realizando decima&ccedil;&atilde;o...'</span>);
+
+    desired_lag = 15;
+    factor = ceil(lag_value / desired_lag);
+
+    new_length = ceil(length(time) / factor);
+
+    time_dec = interp1(1:length(time), time, linspace(1, length(time), new_length));
+    input_dec = interp1(1:length(input), input, linspace(1, length(input), new_length));
+    output_dec = interp1(1:length(output), output, linspace(1, length(output), new_length));
+
+    disp([<span class="string">'Fator de decima&ccedil;&atilde;o aplicado: '</span>, num2str(factor)]);
+    disp([<span class="string">'Novo n&uacute;mero de pontos: '</span>, num2str(length(time_dec))]);
+<span class="keyword">end</span>
+
+N = length(output);
+
+na = 2;
+nb = 2;
+nk = 1;
+
+Phi = zeros(N-max(na, nb+nk-1), na + nb);
+<span class="keyword">for</span> i = 1:na
+    Phi(:, i) = -output(max(na, nb+nk-1) + 1 - i : N - i);
+<span class="keyword">end</span>
+<span class="keyword">for</span> j = 1:nb
+    Phi(:, na + j) = input(max(na, nb+nk-1) + 1 - (j + nk - 1) : N - (j + nk - 1));
+<span class="keyword">end</span>
+
+Y = output(max(na, nb+nk-1) + 1:N);
+
+theta = Phi \ Y;
+
+a = theta(1:na);
+b = theta(na+1:end);
+
+disp(<span class="string">'Coeficientes do modelo ARX:'</span>);
+disp(<span class="string">'a:'</span>);
+disp(a);
+disp(<span class="string">'b:'</span>);
+disp(b);
+
+output_pred = filter([0; b], [1; a], input);
+
+time_adj = time(max(na, nb+nk-1) + 1:end);
+
+figure;
+plot(time_adj, output(max(na, nb+nk-1) + 1:end), <span class="string">'b'</span>, <span class="string">'DisplayName'</span>, <span class="string">'Sa&iacute;da Real'</span>);
+hold <span class="string">on</span>;
+plot(time_adj, output_pred(max(na, nb+nk-1) + 1:end), <span class="string">'r--'</span>, <span class="string">'DisplayName'</span>, <span class="string">'Sa&iacute;da Estimada'</span>);
+legend;
+xlabel(<span class="string">'Tempo'</span>);
+ylabel(<span class="string">'Sa&iacute;da'</span>);
+title(<span class="string">'Compara&ccedil;&atilde;o entre Sa&iacute;da Real e Sa&iacute;da Estimada'</span>);
+grid <span class="string">on</span>;
+
+a = [-1.3172; 0.3711];
+b = [0.0509; 4.3421];
+
+output_pred_sim = filter([0; b], [1; a], input);
+
+error = output(max(na, nb+nk-1) + 1:end) - output_pred_sim(max(na, nb+nk-1) + 1:end);
+
+EMQ = mean(error.^2);
+
+disp([<span class="string">'Erro M&eacute;dio Quadr&aacute;tico (EMQ) em Simula&ccedil;&atilde;o Livre: '</span>, num2str(EMQ)]);
+
+figure;
+plot(time_adj, output(max(na, nb+nk-1) + 1:end), <span class="string">'b'</span>, <span class="string">'DisplayName'</span>, <span class="string">'Sa&iacute;da Real'</span>);
+hold <span class="string">on</span>;
+plot(time_adj, output_pred_sim(max(na, nb+nk-1) + 1:end), <span class="string">'r--'</span>, <span class="string">'DisplayName'</span>, <span class="string">'Sa&iacute;da Estimada'</span>);
+legend;
+xlabel(<span class="string">'Tempo'</span>);
+ylabel(<span class="string">'Sa&iacute;da'</span>);
+title(<span class="string">'Compara&ccedil;&atilde;o entre Sa&iacute;da Real e Sa&iacute;da Estimada'</span>);
+grid <span class="string">on</span>;
+</pre>
+<p class="footer">
+<br>
+<a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2024a</a>
+<br>
+</p>
+</div>
+<!--
+##### SOURCE BEGIN #####
+%% Laboratório de Sistemas Dinâicos
+% Prática 08
+% 22/08/2024
+% Autores: Victor Hugo Daia Lorenzato e Whilker Henrique Santos Silva
+
+%% Limpar workspcade
+close all;
+clear;
+clc;
+
+%% Exercício 1
+
+data = load('ensaio_prbs.txt');
+time = data (:, 1);
+input = data (:, 2);
+output = data (:, 3);
+
+[acf, lags] = xcorr(output, 'coeff');
+
+positive_lags = lags(lags > 0);
+positive_acf = acf(lags > 0);
+
+[min_acf, min_idx] = min(positive_acf);
+lag_value = positive_lags(min_idx);
+
+if lag_value >= 5 && lag_value <= 25
+    disp('Período de amostragem adequado.');
+else
+    disp('Período de amostragem não adequado. Realizando decimação...');
+   
+    desired_lag = 15;  
+    factor = ceil(lag_value / desired_lag);
+
+    new_length = ceil(length(time) / factor);
+    
+    time_dec = interp1(1:length(time), time, linspace(1, length(time), new_length));
+    input_dec = interp1(1:length(input), input, linspace(1, length(input), new_length));
+    output_dec = interp1(1:length(output), output, linspace(1, length(output), new_length));
+    
+    disp(['Fator de decimação aplicado: ', num2str(factor)]);
+    disp(['Novo número de pontos: ', num2str(length(time_dec))]);
+end
+
+N = length(output);
+
+na = 2;  
+nb = 2; 
+nk = 1;  
+
+Phi = zeros(N-max(na, nb+nk-1), na + nb);
+for i = 1:na
+    Phi(:, i) = -output(max(na, nb+nk-1) + 1 - i : N - i);
+end
+for j = 1:nb
+    Phi(:, na + j) = input(max(na, nb+nk-1) + 1 - (j + nk - 1) : N - (j + nk - 1));
+end
+
+Y = output(max(na, nb+nk-1) + 1:N);
+
+theta = Phi \ Y;
+
+a = theta(1:na);
+b = theta(na+1:end);
+
+disp('Coeficientes do modelo ARX:');
+disp('a:');
+disp(a);
+disp('b:');
+disp(b);
+
+output_pred = filter([0; b], [1; a], input);
+
+time_adj = time(max(na, nb+nk-1) + 1:end);
+
+figure;
+plot(time_adj, output(max(na, nb+nk-1) + 1:end), 'b', 'DisplayName', 'Saída Real');
+hold on;
+plot(time_adj, output_pred(max(na, nb+nk-1) + 1:end), 'rREPLACE_WITH_DASH_DASH', 'DisplayName', 'Saída Estimada');
+legend;
+xlabel('Tempo');
+ylabel('Saída');
+title('Comparação entre Saída Real e Saída Estimada');
+grid on;
+
+a = [-1.3172; 0.3711];
+b = [0.0509; 4.3421];
+
+output_pred_sim = filter([0; b], [1; a], input);
+
+error = output(max(na, nb+nk-1) + 1:end) - output_pred_sim(max(na, nb+nk-1) + 1:end);
+
+EMQ = mean(error.^2);
+
+disp(['Erro Médio Quadrático (EMQ) em Simulação Livre: ', num2str(EMQ)]);
+
+figure;
+plot(time_adj, output(max(na, nb+nk-1) + 1:end), 'b', 'DisplayName', 'Saída Real');
+hold on;
+plot(time_adj, output_pred_sim(max(na, nb+nk-1) + 1:end), 'rREPLACE_WITH_DASH_DASH', 'DisplayName', 'Saída Estimada');
+legend;
+xlabel('Tempo');
+ylabel('Saída');
+title('Comparação entre Saída Real e Saída Estimada');
+grid on;
+
+##### SOURCE END #####
+-->
+</body>
+</html>
