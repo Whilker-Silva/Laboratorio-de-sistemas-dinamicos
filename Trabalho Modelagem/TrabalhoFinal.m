@@ -153,7 +153,7 @@ fprintf("O erro médio quadrático (MSE) é %f\n", mse_c);
 %obtiveram resultados bem satisfatórios, contudo com a analise do menor erro médio
 %pode ser observado que o método que mais se aproximou da resposta medida para esse
 %sistema foi o método de Smith seguido do método de uma constante de tempo e
-%método das integrais respectivamente
+%método das integrais respectivamente.
 
 %% Ex02 - Método de Sundaresan
 
@@ -180,7 +180,7 @@ fprintf("Ganho K: %f v/%% \n", k);
 fprintf("Constante de tempo: %f segundos \n", tau_d);
 fprintf("tempo morto: %f segundos \n", theta_d);
 
-mse_d = mean((resposta_degrau - y_c).^2);
+mse_d = mean((resposta_degrau - y_d).^2);
 fprintf("O erro médio quadrático (MSE) é %f\n", mse_d);
 
 %% Ex02 - Método de Mollenkamp
@@ -215,8 +215,8 @@ tau_e1 = (zeta + sqrt(zeta^2 - 1))/w;
 tau_e2 = (zeta - sqrt(zeta^2 - 1))/w;
 
 s = tf('s');
-Hs_e = k*exp(-theta_e*s)/((tau_e1*s+1)*(tau_e2*s+1))
-y_e = step(Hs_d,tempo_degrau);
+Hs_e = k*exp(-theta_e*s)/((tau_e1*s+1)*(tau_e2*s+1));
+y_e = step(Hs_e,tempo_degrau);
 
 figure()
 hold("on");
@@ -230,12 +230,63 @@ grid("on");
 fprintf("Ganho K: %f v/%% \n", k);
 fprintf("Constante de tempo 1: %f segundos \n", tau_e1);
 fprintf("Constante de tempo 2: %f segundos \n", tau_e2);
-fprintf("tempo morto: %f segundos \n", theta_d);
+fprintf("tempo morto: %f segundos \n", theta_e);
 
-mse_d = mean((resposta_degrau - y_c).^2);
-fprintf("O erro médio quadrático (MSE) é %f\n", mse_d);
+mse_e = mean((resposta_degrau - y_e).^2);
+fprintf("O erro médio quadrático (MSE) é %f\n", mse_e);
 
-%% vitao
+%% Ex02 - Conclusão
+
+%Como também pode ser obervado com a análise das simulações os 2 métodos usados
+%obtiveram resultados  satisfatórios, contudo com a analise do menor erro médio
+%pode ser observado que o método que mais se aproximou da resposta medida
+%entre o método de Sundaresan e Mollenkamp, foi o método de Sundaresan.
+
+%% Ex03 - A
+
+y1 = lsim(Hs_a,entrada_prbs,tempo_prbs);
+
+figure();
+hold on;
+plot(tempo_prbs,y1);
+plot(tempo_prbs,resposta_prbs);
+
+%% Ex3 - B
+
+y2 = lsim(Hs_b,entrada_prbs,tempo_prbs);
+
+figure();
+hold on;
+plot(tempo_prbs,y2);
+plot(tempo_prbs,resposta_prbs);
+
+
+%% Ex3 - C
+
+y3 = lsim(Hs_c,entrada_prbs,tempo_prbs);
+
+figure();
+hold on;
+plot(tempo_prbs,y3);
+plot(tempo_prbs,resposta_prbs);
+
+%% Ex3 - D
+
+y4 = lsim(Hs_d,entrada_prbs,tempo_prbs);
+
+figure();
+hold on;
+plot(tempo_prbs,y4);
+plot(tempo_prbs,resposta_prbs);
+
+%% Ex3 - E
+
+y5 = lsim(Hs_e,entrada_prbs,tempo_prbs);
+
+figure();
+hold on;
+plot(tempo_prbs,y5);
+plot(tempo_prbs,resposta_prbs);
 
 
 
