@@ -96,7 +96,8 @@ autocorr(u);
 % perfeitamente correlacionada consigo mesma sem defasagem. Os valores das
 % autocorrelações para lags diferente de 0 estão muito próximos de zero, o
 % que indica que não há correlação significativa entre os valores da série
-% temporal. Os pontos da FAC estão dentro dos limites de confiança.
+% temporal. Os pontos da FAC estão dentro dos limites de confiança, 
+% reforçando que as autocorrelações 
 
 %% Exercício 1)- b)
 
