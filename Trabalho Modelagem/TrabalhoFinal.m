@@ -41,6 +41,8 @@ entrada_prbs = dados_prbs (:,2);
 resposta_prbs = dados_prbs (:,3);
 
 figure()
+hold("on");
+plot(tempo_degrau,entrada_degrau);
 plot(tempo_degrau, resposta_degrau);
 title("Resposta ao degrau");
 xlabel("Tempo(s)");
@@ -48,6 +50,8 @@ ylabel("Tensão (V)");
 grid("on");
 
 figure();
+hold("on");
+plot(tempo_prbs,entrada_prbs);
 plot(tempo_prbs, resposta_prbs);
 title("Resposta ao PRBS");
 xlabel("Tempo(s)");
@@ -370,6 +374,53 @@ plot(20*log10(ganho(1:end/2)));
 subplot(3,1,3);
 plot(fase(1:end/2));
 
+%% PARTE 3 Ex1 (a)
 
+clear all;
+dados_prbs = load('resposta_ao_prbs.txt');
+entrada = dados_prbs(:,2);
+tempo = dados_prbs(:,1);
+saida = dados_prbs(:,3);
 
+x = [];
+x(:,1) = saida(1:end-1);
+x(:,2) = entrada(1:end-1);
+ya = saida(2:end);
+
+theta1 = pinv(x) * ya;
+fprintf("Os valores dos parâmetros são: %.3f, %.3f", theta1(1), theta1(2));
+
+x = [];
+x(:,1) = saida(2:end-1);
+x(:,2) = saida(1:end-2);
+x(:,3) = entrada(2:end-1);
+x(:,4) = entrada(1:end-2);
+ya = saida(3:end);
+
+%% Ex1 (b)
+
+clc;
+theta2 = pinv(x) * ya;
+fprintf("Os valores dos parâmetros são: %.3f, %.3f, %.3f, %.3f", theta2(1), theta2(2), theta2(3), theta2(4));
+
+%% Ex2
+
+f = [0];
+for i = 2:3000
+    f(i,1) = f(i-1)*theta1(1) + entrada(i-1)*theta1(2);
+end
+
+plot(tempo,f);
+
+f2 = [0;0];
+for i = 3:3000
+    f2(i,1) = f2(i-1)*theta2(1) + f2(i-2)*theta2(2) + entrada(i-1)*theta2(3) + entrada(i-2)*theta2(4);
+end
+
+hold on;
+plot(tempo,f2);
+legend('f1','f2')
+
+mse = mean(f2 - f).^2;
+fprintf("O erro médio quadrático (MSE) é %.2f\n", mse);
 
