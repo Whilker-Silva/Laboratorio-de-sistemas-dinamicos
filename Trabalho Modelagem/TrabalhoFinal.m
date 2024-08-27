@@ -251,7 +251,7 @@ hold on;
 plot(tempo_prbs,y1);
 plot(tempo_prbs,resposta_prbs);
 
-%% Ex3 - B
+%% Ex03 - B
 
 y2 = lsim(Hs_b,entrada_prbs,tempo_prbs);
 
@@ -261,7 +261,7 @@ plot(tempo_prbs,y2);
 plot(tempo_prbs,resposta_prbs);
 
 
-%% Ex3 - C
+%% Ex03 - C
 
 y3 = lsim(Hs_c,entrada_prbs,tempo_prbs);
 
@@ -270,7 +270,7 @@ hold on;
 plot(tempo_prbs,y3);
 plot(tempo_prbs,resposta_prbs);
 
-%% Ex3 - D
+%% Ex03 - D
 
 y4 = lsim(Hs_d,entrada_prbs,tempo_prbs);
 
@@ -279,7 +279,7 @@ hold on;
 plot(tempo_prbs,y4);
 plot(tempo_prbs,resposta_prbs);
 
-%% Ex3 - E
+%% Ex03 - E
 
 y5 = lsim(Hs_e,entrada_prbs,tempo_prbs);
 
@@ -289,7 +289,86 @@ plot(tempo_prbs,y5);
 plot(tempo_prbs,resposta_prbs);
 
 
+%% Parte 2- Métodos não-paramétricos
 
+% Exercício 1)- a)
+
+dados_prbs = load('resposta_ao_prbs.txt');
+
+u = dados_prbs(:,2);
+y = dados_prbs(:,3);
+t = dados_prbs(:,1);
+
+figure;
+autocorr(u);
+
+% Análise:
+% A correlação no lag 0 é sempre 1, pois a série temporal está
+% perfeitamente correlacionada consigo mesma sem defasagem. Os valores das
+% autocorrelações para lags diferente de 0 estão muito próximos de zero, o
+% que indica que não há correlação significativa entre os valores da série
+% temporal. Os pontos da FAC estão dentro dos limites de confiança.
+
+%% Exercício 1)- b)
+
+dados_prbs = load('resposta_ao_prbs.txt');
+
+u = dados_prbs(:,2);
+y = dados_prbs(:,3);
+t = dados_prbs(:,1);
+
+figure;
+crosscorr(u,y,150);
+
+%% Exercício 1)- c)
+
+dados_prbs = load('resposta_ao_prbs.txt');
+
+u = dados_prbs(:,2);
+y = dados_prbs(:,3);
+t = dados_prbs(:,1);
+
+figure;
+y = y(1:4:end);
+autocorr(y,150);
+
+%% Exercício 1)- d)
+
+dados_prbs = load('resposta_ao_prbs.txt');
+
+y = dados_prbs(:,3);
+u = dados_prbs(:,2);
+t = dados_prbs(:,1);
+
+tamanho_u = length(u);
+
+Matriz = zeros(tamanho_u/2, tamanho_u/2);
+
+for i = 1:tamanho_u/2
+    for j = 1:tamanho_u/2
+        Matriz(i,j) = u(tamanho_u/2-j+i);
+    end
+end
+
+H = inv(Matriz)*y(tamanho_u/2:end-1);
+
+subplot(3,1,1);
+plot(H);
+
+y_fft = fft(y);
+u_fft = fft(u);
+
+h_jw = y_fft./u_fft;
+
+fase = angle(h_jw);
+fase = fase*180/pi;
+ganho = abs(h_jw);
+
+subplot(3,1,2);
+plot(20*log10(ganho(1:end/2)));
+
+subplot(3,1,3);
+plot(fase(1:end/2));
 
 
 
