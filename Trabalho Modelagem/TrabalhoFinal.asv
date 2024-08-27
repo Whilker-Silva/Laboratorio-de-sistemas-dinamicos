@@ -216,24 +216,20 @@ tau_e2 = (zeta - sqrt(zeta^2 - 1))/w;
 
 s = tf('s');
 Hs_e = k*exp(-theta_e*s)/((tau_e1*s+1)*(tau_e2*s+1))
-y_e = step(Hs_d,tempo_degrau);
 
-figure()
-hold("on");
 plot(tempo_degrau, resposta_degrau);
-plot(tempo_degrau, y_e);
-title("Resposta método de Mollenkamp");
-xlabel("Tempo(s)");
-ylabel("Tensão (V)");
-grid("on");
 
-fprintf("Ganho K: %f v/%% \n", k);
-fprintf("Constante de tempo 1: %f segundos \n", tau_e1);
-fprintf("Constante de tempo 2: %f segundos \n", tau_e2);
-fprintf("tempo morto: %f segundos \n", theta_d);
+hold on;
+y = step(H4, dados(:,1));
+plot(dados(:,1), y);
+legend('Resposta ao impulso: dados','Resposta ao impulso: função H');
 
-mse_d = mean((resposta_degrau - y_c).^2);
-fprintf("O erro médio quadrático (MSE) é %f\n", mse_d);
+fprintf('K = %.2f °C/V \n', k);
+fprintf('tal1 = %.2f \n', tau_e1);
+fprintf('tal2 = %.2f \n', tau_e2);
+
+mse = mean((dados(:,3) - y).^2);
+fprintf("O erro médio quadrático (MSE) é %.2f\n", mse);
 
 %% vitao
 
