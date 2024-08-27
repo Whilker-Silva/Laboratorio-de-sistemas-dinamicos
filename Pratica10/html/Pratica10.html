@@ -1,0 +1,822 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      -->
+<title>Laborat&oacute;rio de Sistemas Din&acirc;icos</title>
+<meta name="generator" content="MATLAB 24.1">
+<link rel="schema.DC" href="http://purl.org/dc/elements/1.1/">
+<meta name="DC.date" content="2024-08-26">
+<meta name="DC.source" content="Pratica10.m">
+<style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; }
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+span.typesection { color:#A0522D }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style>
+</head>
+<body>
+<div class="content">
+<h1>Laborat&oacute;rio de Sistemas Din&acirc;icos</h1>
+<!--introduction-->
+<p>Pratica 10 22/08/2024 Autores: Victor Hugo Daia Lorenzato e Whilker Henrique Santos Silva</p>
+<!--/introduction-->
+<h2>Contents</h2>
+<div>
+<ul>
+<li>
+<a href="#1">Limpar WorkSpace</a>
+</li>
+<li>
+<a href="#2">Ex1(a)</a>
+</li>
+<li>
+<a href="#3">Ex1 (b)</a>
+</li>
+<li>
+<a href="#4">Limpar WorkSpace</a>
+</li>
+<li>
+<a href="#5">Ex2 (a)</a>
+</li>
+<li>
+<a href="#6">Ex2 (b)</a>
+</li>
+<li>
+<a href="#7">Ex2(c)</a>
+</li>
+<li>
+<a href="#8">Ex2 (d)</a>
+</li>
+<li>
+<a href="#9">Limpar WorkSpace</a>
+</li>
+<li>
+<a href="#10">Ex3 (a)</a>
+</li>
+</ul>
+</div>
+<h2 id="1">Limpar WorkSpace</h2>
+<pre class="codeinput">clear;
+clc;
+
+dados = load(<span class="string">'dadosordem2sobre.txt'</span>);
+</pre>
+<h2 id="2">Ex1(a)</h2>
+<pre class="codeinput">clear;
+clc;
+close <span class="string">all</span>;
+dados = load(<span class="string">'dadosordem2sobre.txt'</span>);
+
+k = 10;
+
+y1 = 0.15 * k;
+y2 = 0.45 * k;
+y3 = 0.75 * k;
+
+indice1 = find(dados(:,3) &lt;= y1, 1, <span class="string">'last'</span> );
+indice2 = find(dados(:,3) &lt;= y2, 1, <span class="string">'last'</span> );
+indice3 = find(dados(:,3) &lt;= y3, 1, <span class="string">'last'</span> );
+
+t1 = dados(indice1,1);
+t2 = dados(indice2,1);
+t3 = dados(indice3,1);
+
+x = (t2 - t1)/(t3 - t1);
+zeta = (0.0805-5.547*(0.475 - x)^2)/(x - 0.356);
+
+<span class="keyword">if</span> zeta &gt;= 1
+    f1 = 2.6*zeta - 0.6;
+<span class="keyword">else</span>
+    f1 = 0.708*(2.811)^zeta;
+<span class="keyword">end</span>
+
+w = f1/(t3-t1);
+
+f2 = 0.922*(1.66)^zeta;
+teta = t2 - f2/w;
+
+tal1 = (zeta + sqrt(zeta^2 - 1))/w;
+tal2 = (zeta - sqrt(zeta^2 - 1))/w;
+
+s = tf(<span class="string">'s'</span>);
+
+H = k*exp(-teta*s)/((tal1*s+1)*(tal2*s+1))
+
+plot(dados(:,1), dados(:,3));
+
+hold <span class="string">on</span>;
+y1 = step(H, dados(:,1));
+plot(dados(:,1), y1);
+
+legend(<span class="string">'Resposta ao degrau: dados'</span>,<span class="string">'Resposta ao impulso: fun&ccedil;&atilde;o H'</span>);
+mse = mean((dados(:,3) - y1).^2);
+fprintf(<span class="string">"O erro m&eacute;dio quadr&aacute;tico (MSE) &eacute; %.3f\n"</span>, mse);
+</pre>
+<pre class="codeoutput">
+H =
+ 
+                           10
+  exp(-10.4*s) * ----------------------
+                 2041 s^2 + 98.93 s + 1
+ 
+Continuous-time transfer function.
+O erro m&eacute;dio quadr&aacute;tico (MSE) &eacute; 0.000
+</pre>
+<img vspace="5" hspace="5" src="Pratica10_01.png" alt=""> <h2 id="3">Ex1 (b)</h2>
+<pre class="codeinput">clear;
+clc;
+close <span class="string">all</span>;
+dados = load(<span class="string">'dadosordem2sobre.txt'</span>);
+
+dados_normalizados = (dados(:,3))/10;
+m1 = trapz(dados(:,1),dados(:,2) - dados_normalizados);
+tm = 158;
+t1 = 21;
+M1 = 1/(tm-t1);
+
+lambda = (tm-m1) * M1;
+eta = 0.52;
+
+tal1 = eta^(eta/(1-eta))/M1;
+tal2 = eta^(1/(1-eta))/M1;
+
+teta = m1-tal1-tal2;
+
+
+k = 10;
+s = tf(<span class="string">'s'</span>);
+
+H = k*exp(-teta*s)/((tal1*s+1)*(tal2*s+1));
+
+plot(dados(:,1), dados(:,3));
+
+hold <span class="string">on</span>;
+grid <span class="string">on</span>;
+y1 = step(H, dados(:,1));
+plot(dados(:,1), y1);
+
+legend(<span class="string">'Resposta ao degrau: dados'</span>,<span class="string">'Resposta ao impulso: fun&ccedil;&atilde;o H'</span>);
+mse = mean((dados(:,3) - y1).^2);
+fprintf(<span class="string">"O erro m&eacute;dio quadr&aacute;tico (MSE) &eacute; %.3f\n"</span>, mse);
+</pre>
+<pre class="codeoutput">O erro m&eacute;dio quadr&aacute;tico (MSE) &eacute; 0.001
+</pre>
+<img vspace="5" hspace="5" src="Pratica10_02.png" alt=""> <h2 id="4">Limpar WorkSpace</h2>
+<pre class="codeinput">clear;
+clc;
+dados = load(<span class="string">'dadosordem2sub.txt'</span>);
+</pre>
+<h2 id="5">Ex2 (a)</h2>
+<pre class="codeinput">clear;
+clc;
+close <span class="string">all</span>;
+dados = load(<span class="string">'dadosordem2sub.txt'</span>);
+
+K = 5; <span class="comment">%An&aacute;lise visual</span>
+teta = 3; <span class="comment">%An&aacute;lise visual</span>
+zeta = 0.6/2;
+t_pico = 4.64 - teta; <span class="comment">%Identifica&ccedil;&atilde;o no gr&aacute;fico</span>
+w_n = pi/(t_pico*sqrt(1-zeta^2));
+tal = 1/(zeta*w_n) + teta;
+
+hold <span class="string">on</span>;
+grid <span class="string">on</span>;
+
+s = tf(<span class="string">'s'</span>);
+t = 0:0.015:14.985;
+H = (K*exp(-teta*s)*(w_n)^2)/(s^2+2*zeta*w_n*s+(w_n)^2)
+y = step(H,t);
+plot(t,y);
+
+fprintf(<span class="string">'K = %.2f &deg;C/V \n'</span>, K);
+fprintf(<span class="string">'theta = %.2f segundos \n'</span>, teta);
+fprintf(<span class="string">'tal = %.2f segundos \n'</span>, tal);
+fprintf(<span class="string">'zeta = %.2f \n'</span>, zeta);
+fprintf(<span class="string">'w_n = %.2f \n'</span>, w_n);
+
+legend(<span class="string">'Resposta ao degrau: dados'</span>,<span class="string">'Resposta ao impulso: fun&ccedil;&atilde;o H'</span>);
+mse = mean((dados(:,3) - y).^2);
+fprintf(<span class="string">"O erro m&eacute;dio quadr&aacute;tico (MSE) &eacute; %.3f\n"</span>, mse);
+</pre>
+<pre class="codeoutput">
+H =
+ 
+                      20.16
+  exp(-3*s) * ---------------------
+              s^2 + 1.205 s + 4.032
+ 
+Continuous-time transfer function.
+K = 5.00 &deg;C/V 
+theta = 3.00 segundos 
+tal = 4.66 segundos 
+zeta = 0.30 
+w_n = 2.01 
+O erro m&eacute;dio quadr&aacute;tico (MSE) &eacute; 0.000
+</pre>
+<img vspace="5" hspace="5" src="Pratica10_03.png" alt=""> <h2 id="6">Ex2 (b)</h2>
+<pre class="codeinput">clear;
+clc;
+close <span class="string">all</span>;
+dados = load(<span class="string">'dadosordem2sub.txt'</span>);
+
+K = 5; <span class="comment">%An&aacute;lise visual</span>
+teta = 3; <span class="comment">%An&aacute;lise visual</span>
+t_pico = 4.64 - teta; <span class="comment">%Identifica&ccedil;&atilde;o no gr&aacute;fico</span>
+
+<span class="comment">% Analisando o valor de overshoot, nota-se que Mp = 37%. Desse modo,</span>
+<span class="comment">% analisando o gr&aacute;fico nos slides, temos zeta = 0,28</span>
+
+zeta = 0.28;
+w_n = pi/(t_pico*sqrt(1-zeta^2));
+tal = 1/(zeta*w_n) + teta;
+
+hold <span class="string">on</span>;
+grid <span class="string">on</span>;
+
+s = tf(<span class="string">'s'</span>);
+t = 0:0.015:14.985;
+H = (K*exp(-teta*s)*(w_n)^2)/(s^2+2*zeta*w_n*s+(w_n)^2)
+y = step(H,t);
+plot(t,y);
+
+fprintf(<span class="string">'K = %.2f &deg;C/V \n'</span>, K);
+fprintf(<span class="string">'theta = %.2f segundos \n'</span>, teta);
+fprintf(<span class="string">'tal = %.2f segundos \n'</span>, tal);
+
+legend(<span class="string">'Resposta ao degrau: dados'</span>,<span class="string">'Resposta ao impulso: fun&ccedil;&atilde;o H'</span>);
+mse = mean((dados(:,3) - y).^2);
+fprintf(<span class="string">"O erro m&eacute;dio quadr&aacute;tico (MSE) &eacute; %.3f\n"</span>, mse);
+</pre>
+<pre class="codeoutput">
+H =
+ 
+                      19.91
+  exp(-3*s) * ---------------------
+              s^2 + 1.117 s + 3.982
+ 
+Continuous-time transfer function.
+K = 5.00 &deg;C/V 
+theta = 3.00 segundos 
+tal = 4.79 segundos 
+O erro m&eacute;dio quadr&aacute;tico (MSE) &eacute; 0.002
+</pre>
+<img vspace="5" hspace="5" src="Pratica10_04.png" alt=""> <h2 id="7">Ex2(c)</h2>
+<pre class="codeinput">clear;
+clc;
+close <span class="string">all</span>;
+dados = load(<span class="string">'dadosordem2sub.txt'</span>);
+
+K = 5;
+
+y1 = 0.15 * K;
+y2 = 0.45 * K;
+y3 = 0.75 * K;
+
+indice1 = find(dados(:,3) &lt;= y1, 1, <span class="string">'last'</span> );
+indice2 = find(dados(:,3) &lt;= y2, 1, <span class="string">'last'</span> );
+indice3 = find(dados(:,3) &lt;= y3, 1, <span class="string">'last'</span> );
+
+t1 = dados(indice1,1);
+t2 = dados(indice2,1);
+t3 = dados(indice3,1);
+
+x = (t2 - t1)/(t3 - t1);
+zeta = (0.0805-5.547*(0.475 - x)^2)/(x - 0.356);
+
+f1 = 0.708*(2.811)^zeta;
+
+w_n = f1/(t3-t1);
+
+f2 = 0.922*(1.66)^zeta;
+teta = t2 - f2/w_n;
+
+tal1 = (zeta + sqrt(zeta^2 - 1))/w_n;
+tal2 = (zeta - sqrt(zeta^2 - 1))/w_n;
+
+s = tf(<span class="string">'s'</span>);
+
+H = K*exp(-teta*s)/((tal1*s+1)*(tal2*s+1))
+
+plot(dados(:,1), dados(:,3));
+
+hold <span class="string">on</span>;
+t = 0:0.015:14.985;
+y1 = step(H, t);
+plot(t, y1);
+
+legend(<span class="string">'Resposta ao degrau: dados'</span>,<span class="string">'Resposta ao impulso: fun&ccedil;&atilde;o H'</span>);
+mse = mean((dados(:,3) - y1).^2);
+fprintf(<span class="string">"O erro m&eacute;dio quadr&aacute;tico (MSE) &eacute; %.2f\n"</span>, mse);
+
+fprintf(<span class="string">'K = %.2f &deg;C/V \n'</span>, K);
+fprintf(<span class="string">'theta = %.2f segundos \n'</span>, teta);
+fprintf(<span class="string">'tal = %.2f segundos \n'</span>, tal1);
+fprintf(<span class="string">'zeta = %.2f \n'</span>, zeta);
+fprintf(<span class="string">'w_n = %.2f \n'</span>, w_n);
+</pre>
+<pre class="codeoutput">
+H =
+ 
+                             5
+  exp(-3.04*s) * -------------------------
+                 0.1938 s^2 + 0.3678 s + 1
+ 
+Continuous-time transfer function.
+O erro m&eacute;dio quadr&aacute;tico (MSE) &eacute; 0.05
+K = 5.00 &deg;C/V 
+theta = 3.04 segundos 
+tal = 0.18 segundos 
+zeta = 0.42 
+w_n = 2.27 
+</pre>
+<img vspace="5" hspace="5" src="Pratica10_05.png" alt=""> <h2 id="8">Ex2 (d)</h2>
+<pre class="codeinput">clear;
+clc;
+close <span class="string">all</span>;
+dados = load(<span class="string">'dadosordem2sub.txt'</span>);
+
+K = 5;
+
+dados_normalizados = (dados(:,3))/5;
+m1 = trapz(dados(:,1),dados(:,2) - dados_normalizados);
+tm = 4; <span class="comment">%% Intersec&ccedil;&atilde;o com o regime permanente</span>
+t1 = 3.2; <span class="comment">%% Ponto de Inflex&atilde;o</span>
+M1 = 5/(tm-t1);
+
+lambda = (tm-m1)*M1;
+zeta = 0.25;
+
+w_n = acos(zeta)/(sqrt(1-zeta^2)*(tm - m1));
+teta = m1 - 2*zeta/w_n;
+
+s = tf(<span class="string">'s'</span>);
+H = (K*exp(-teta*s)*w_n^2)/(s^2+2*zeta*w_n*s+w_n^2)
+
+grid <span class="string">on</span>;
+hold <span class="string">on</span>;
+
+t = 0:0.015:14.985;
+y1 = step(H, t);
+plot(t,y1);
+
+legend(<span class="string">'Resposta ao degrau: dados'</span>,<span class="string">'Resposta ao impulso: fun&ccedil;&atilde;o H'</span>);
+mse = mean((dados(:,3) - y1).^2);
+fprintf(<span class="string">"O erro m&eacute;dio quadr&aacute;tico (MSE) &eacute; %.3f\n"</span>, mse);
+
+fprintf(<span class="string">'K = %.2f &deg;C/V \n'</span>, K);
+fprintf(<span class="string">'theta = %.2f segundos \n'</span>, teta);
+fprintf(<span class="string">'zeta = %.2f \n'</span>, zeta);
+fprintf(<span class="string">'w_n = %.2f \n'</span>, w_n);
+</pre>
+<pre class="codeoutput">
+H =
+ 
+                         18.82
+  exp(-3.04*s) * ----------------------
+                 s^2 + 0.9701 s + 3.765
+ 
+Continuous-time transfer function.
+O erro m&eacute;dio quadr&aacute;tico (MSE) &eacute; 0.024
+K = 5.00 &deg;C/V 
+theta = 3.04 segundos 
+zeta = 0.25 
+w_n = 1.94 
+</pre>
+<img vspace="5" hspace="5" src="Pratica10_06.png" alt=""> <h2 id="9">Limpar WorkSpace</h2>
+<pre class="codeinput">clear;
+clc;
+dados = load(<span class="string">'dadosordem2aleatorio.txt'</span>);
+</pre>
+<h2 id="10">Ex3 (a)</h2>
+<pre class="codeinput">clear ;
+clc;
+close <span class="string">all</span>;
+dados = load(<span class="string">'dadosordem2aleatorio.txt'</span>);
+
+y = dados(:,3);
+u = dados(:,2);
+t = dados(:,1);
+
+tam_u = length(u);
+
+MatReg = zeros(tam_u/2, tam_u/2);
+
+<span class="keyword">for</span> i = 1:tam_u/2
+    <span class="keyword">for</span> j = 1:tam_u/2
+        MatReg(i,j) = u(tam_u/2-j+i);
+    <span class="keyword">end</span>
+<span class="keyword">end</span>
+
+H = inv(MatReg) * y(1000:end-1);
+
+subplot(3,1,1);
+plot(H);
+
+y_fft = fft(y);
+u_fft = fft(u);
+
+h_jw = y_fft./u_fft;
+
+fase = angle(h_jw);
+fase = fase*180/pi;
+ganho = abs(h_jw);
+
+subplot(3,1,2);
+plot(20*log10(ganho(1:end/2)));
+
+subplot(3,1,3);
+plot(fase(1:end/2));
+</pre>
+<img vspace="5" hspace="5" src="Pratica10_07.png" alt=""> <p class="footer">
+<br>
+<a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2024a</a>
+<br>
+</p>
+</div>
+<!--
+##### SOURCE BEGIN #####
+%% Laboratório de Sistemas Dinâicos
+% Pratica 10
+% 22/08/2024
+% Autores: Victor Hugo Daia Lorenzato e Whilker Henrique Santos Silva
+%% Limpar WorkSpace
+clear;
+clc;
+
+dados = load('dadosordem2sobre.txt');
+
+%% Ex1(a)
+
+clear;
+clc;
+close all;
+dados = load('dadosordem2sobre.txt');
+
+k = 10;
+
+y1 = 0.15 * k;
+y2 = 0.45 * k;
+y3 = 0.75 * k;
+
+indice1 = find(dados(:,3) <= y1, 1, 'last' ); 
+indice2 = find(dados(:,3) <= y2, 1, 'last' );
+indice3 = find(dados(:,3) <= y3, 1, 'last' );
+
+t1 = dados(indice1,1);
+t2 = dados(indice2,1);
+t3 = dados(indice3,1);
+
+x = (t2 - t1)/(t3 - t1);
+zeta = (0.0805-5.547*(0.475 - x)^2)/(x - 0.356);
+
+if zeta >= 1
+    f1 = 2.6*zeta - 0.6;
+else
+    f1 = 0.708*(2.811)^zeta;
+end
+
+w = f1/(t3-t1);
+
+f2 = 0.922*(1.66)^zeta;
+teta = t2 - f2/w;
+
+tal1 = (zeta + sqrt(zeta^2 - 1))/w;
+tal2 = (zeta - sqrt(zeta^2 - 1))/w;
+
+s = tf('s');
+
+H = k*exp(-teta*s)/((tal1*s+1)*(tal2*s+1))
+
+plot(dados(:,1), dados(:,3));
+
+hold on;
+y1 = step(H, dados(:,1));
+plot(dados(:,1), y1);
+
+legend('Resposta ao degrau: dados','Resposta ao impulso: função H');
+mse = mean((dados(:,3) - y1).^2);
+fprintf("O erro médio quadrático (MSE) é %.3f\n", mse);
+
+%% Ex1 (b)
+
+clear;
+clc;
+close all;
+dados = load('dadosordem2sobre.txt');
+
+dados_normalizados = (dados(:,3))/10;
+m1 = trapz(dados(:,1),dados(:,2) - dados_normalizados);
+tm = 158;
+t1 = 21;
+M1 = 1/(tm-t1);
+
+lambda = (tm-m1) * M1;
+eta = 0.52;
+
+tal1 = eta^(eta/(1-eta))/M1;
+tal2 = eta^(1/(1-eta))/M1;
+
+teta = m1-tal1-tal2;
+
+
+k = 10;
+s = tf('s');
+
+H = k*exp(-teta*s)/((tal1*s+1)*(tal2*s+1));
+
+plot(dados(:,1), dados(:,3));
+
+hold on;
+grid on;
+y1 = step(H, dados(:,1));
+plot(dados(:,1), y1);
+
+legend('Resposta ao degrau: dados','Resposta ao impulso: função H');
+mse = mean((dados(:,3) - y1).^2);
+fprintf("O erro médio quadrático (MSE) é %.3f\n", mse);
+
+%% Limpar WorkSpace
+clear;
+clc;
+dados = load('dadosordem2sub.txt');
+
+%% Ex2 (a)
+
+clear;
+clc;
+close all;
+dados = load('dadosordem2sub.txt');
+
+K = 5; %Análise visual
+teta = 3; %Análise visual
+zeta = 0.6/2;
+t_pico = 4.64 - teta; %Identificação no gráfico
+w_n = pi/(t_pico*sqrt(1-zeta^2));
+tal = 1/(zeta*w_n) + teta;
+
+hold on;
+grid on;
+
+s = tf('s');
+t = 0:0.015:14.985;
+H = (K*exp(-teta*s)*(w_n)^2)/(s^2+2*zeta*w_n*s+(w_n)^2)
+y = step(H,t);
+plot(t,y);
+
+fprintf('K = %.2f °C/V \n', K);
+fprintf('theta = %.2f segundos \n', teta);
+fprintf('tal = %.2f segundos \n', tal);
+fprintf('zeta = %.2f \n', zeta);
+fprintf('w_n = %.2f \n', w_n);
+
+legend('Resposta ao degrau: dados','Resposta ao impulso: função H');
+mse = mean((dados(:,3) - y).^2);
+fprintf("O erro médio quadrático (MSE) é %.3f\n", mse);
+
+
+%% Ex2 (b)
+
+clear;
+clc;
+close all;
+dados = load('dadosordem2sub.txt');
+
+K = 5; %Análise visual
+teta = 3; %Análise visual
+t_pico = 4.64 - teta; %Identificação no gráfico
+
+% Analisando o valor de overshoot, nota-se que Mp = 37%. Desse modo,
+% analisando o gráfico nos slides, temos zeta = 0,28
+
+zeta = 0.28;
+w_n = pi/(t_pico*sqrt(1-zeta^2));
+tal = 1/(zeta*w_n) + teta;
+
+hold on;
+grid on;
+
+s = tf('s');
+t = 0:0.015:14.985;
+H = (K*exp(-teta*s)*(w_n)^2)/(s^2+2*zeta*w_n*s+(w_n)^2)
+y = step(H,t);
+plot(t,y);
+
+fprintf('K = %.2f °C/V \n', K);
+fprintf('theta = %.2f segundos \n', teta);
+fprintf('tal = %.2f segundos \n', tal);
+
+legend('Resposta ao degrau: dados','Resposta ao impulso: função H');
+mse = mean((dados(:,3) - y).^2);
+fprintf("O erro médio quadrático (MSE) é %.3f\n", mse);
+
+%% Ex2(c)
+
+clear;
+clc;
+close all;
+dados = load('dadosordem2sub.txt');
+
+K = 5;
+
+y1 = 0.15 * K;
+y2 = 0.45 * K;
+y3 = 0.75 * K;
+
+indice1 = find(dados(:,3) <= y1, 1, 'last' ); 
+indice2 = find(dados(:,3) <= y2, 1, 'last' );
+indice3 = find(dados(:,3) <= y3, 1, 'last' );
+
+t1 = dados(indice1,1);
+t2 = dados(indice2,1);
+t3 = dados(indice3,1);
+
+x = (t2 - t1)/(t3 - t1);
+zeta = (0.0805-5.547*(0.475 - x)^2)/(x - 0.356);
+
+f1 = 0.708*(2.811)^zeta;
+
+w_n = f1/(t3-t1);
+
+f2 = 0.922*(1.66)^zeta;
+teta = t2 - f2/w_n;
+
+tal1 = (zeta + sqrt(zeta^2 - 1))/w_n;
+tal2 = (zeta - sqrt(zeta^2 - 1))/w_n;
+
+s = tf('s');
+
+H = K*exp(-teta*s)/((tal1*s+1)*(tal2*s+1))
+
+plot(dados(:,1), dados(:,3));
+
+hold on;
+t = 0:0.015:14.985;
+y1 = step(H, t);
+plot(t, y1);
+
+legend('Resposta ao degrau: dados','Resposta ao impulso: função H');
+mse = mean((dados(:,3) - y1).^2);
+fprintf("O erro médio quadrático (MSE) é %.2f\n", mse);
+
+fprintf('K = %.2f °C/V \n', K);
+fprintf('theta = %.2f segundos \n', teta);
+fprintf('tal = %.2f segundos \n', tal1);
+fprintf('zeta = %.2f \n', zeta);
+fprintf('w_n = %.2f \n', w_n);
+
+%% Ex2 (d)
+
+clear;
+clc;
+close all;
+dados = load('dadosordem2sub.txt');
+
+K = 5;
+
+dados_normalizados = (dados(:,3))/5;
+m1 = trapz(dados(:,1),dados(:,2) - dados_normalizados);
+tm = 4; %% Intersecção com o regime permanente
+t1 = 3.2; %% Ponto de Inflexão
+M1 = 5/(tm-t1);
+
+lambda = (tm-m1)*M1;
+zeta = 0.25;
+
+w_n = acos(zeta)/(sqrt(1-zeta^2)*(tm - m1));
+teta = m1 - 2*zeta/w_n;
+
+s = tf('s');
+H = (K*exp(-teta*s)*w_n^2)/(s^2+2*zeta*w_n*s+w_n^2)
+
+grid on;
+hold on;
+
+t = 0:0.015:14.985;
+y1 = step(H, t);
+plot(t,y1);
+
+legend('Resposta ao degrau: dados','Resposta ao impulso: função H');
+mse = mean((dados(:,3) - y1).^2);
+fprintf("O erro médio quadrático (MSE) é %.3f\n", mse);
+
+fprintf('K = %.2f °C/V \n', K);
+fprintf('theta = %.2f segundos \n', teta);
+fprintf('zeta = %.2f \n', zeta);
+fprintf('w_n = %.2f \n', w_n);
+
+%% Limpar WorkSpace
+clear;
+clc;
+dados = load('dadosordem2aleatorio.txt');
+
+%% Ex3 (a)
+
+clear ;
+clc;
+close all;
+dados = load('dadosordem2aleatorio.txt');
+
+y = dados(:,3);
+u = dados(:,2);
+t = dados(:,1);
+
+tam_u = length(u);
+
+MatReg = zeros(tam_u/2, tam_u/2);
+
+for i = 1:tam_u/2
+    for j = 1:tam_u/2
+        MatReg(i,j) = u(tam_u/2-j+i);
+    end
+end
+
+H = inv(MatReg) * y(1000:end-1);
+
+subplot(3,1,1);
+plot(H);
+
+y_fft = fft(y);
+u_fft = fft(u);
+
+h_jw = y_fft./u_fft;
+
+fase = angle(h_jw);
+fase = fase*180/pi;
+ganho = abs(h_jw);
+
+subplot(3,1,2);
+plot(20*log10(ganho(1:end/2)));
+
+subplot(3,1,3);
+plot(fase(1:end/2));
+
+
+
+
+
+
+
+##### SOURCE END #####
+-->
+</body>
+</html>
